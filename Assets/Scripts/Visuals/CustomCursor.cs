@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class CustomCursor : MonoBehaviour
 {
-    void Start()
-    { // Now correctly refers to UnityEngine.Cursor
+    void Awake()
+    { 
+        Cursor.visible = false;
     }
 }
