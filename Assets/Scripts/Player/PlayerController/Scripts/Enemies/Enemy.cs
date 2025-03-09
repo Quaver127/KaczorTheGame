@@ -44,7 +44,7 @@ public class Enemy : MonoBehaviour {
 		if (hit.collider != null && hit.collider.gameObject.tag == "Pushable")
 		{
 			box = hit.collider.gameObject;
-			ApplyDamage(4f);
+			ApplyDamage(4);
 		}
 	}
 	
@@ -96,7 +96,7 @@ public class Enemy : MonoBehaviour {
 		transform.localScale = theScale;
 	}
 
-	public void ApplyDamage(float damage) {
+	public void ApplyDamage(int damage) {
 		if (!isInvincible) 
 		{
 			float direction = damage / Mathf.Abs(damage);
@@ -113,7 +113,7 @@ public class Enemy : MonoBehaviour {
 	{
 		if (collision.gameObject.tag == "Player" && life > 0)
 		{
-			collision.gameObject.GetComponent<CharacterController2D>().ApplyDamage(2f, transform.position);
+			collision.gameObject.GetComponent<CharacterController2D>().ApplyDamage(1, transform.position);
 		}
 	}
 

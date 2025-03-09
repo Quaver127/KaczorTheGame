@@ -31,7 +31,10 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 	private float prevVelocityX = 0f;
 	private bool canCheck = false; 
 
-	public float life = 10f; 
+	
+	public HealthUI healthUI;
+	public int life = 3;
+	public int currentHealth;
 	public bool invincible = false; 
 	public bool canMove = true; 
 
@@ -64,6 +67,12 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 			OnLandEvent = new UnityEvent();
 	}
 
+	private void Start()
+	{
+		currentHealth = life;
+		healthUI.SetMaxHearts(life);
+		
+	}
 
 	private void FixedUpdate()
 	{
@@ -275,19 +284,17 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 		}
 		
 		Trap trap = other.GetComponent<Trap>();
-		if (trap != null && trap.damage > 0)
+		if (trap&& trap.damage > 0)
 		{
 			if (!invincible)
 			{
-				animator.SetBool("Hit", true);
-				life -= trap.damage;
-				if (life <= 0)
+				TakeSpikeDamage(trap.damage);
+				if (currentHealth <= 0)
 				{
 					StartCoroutine(WaitToDead());
 				}
 				else 
 				{
-					
 					StartCoroutine(MakeInvincible(0.5f));
 				}	
 			}
@@ -295,16 +302,25 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 		}
 	}
 
-	public void ApplyDamage(float damage, Vector3 position) 
+	private void TakeSpikeDamage(int damage)
+	{
+		animator.SetBool("Hit", true);
+		currentHealth -= damage;
+		healthUI.UpdateHearts(currentHealth);
+	}
+	public void ApplyDamage(int damage, Vector3 position) 
 	{
 		if (!invincible)
 		{
 			animator.SetBool("Hit", true);
-			life -= damage;
+			
+			currentHealth -= damage;
+			healthUI.UpdateHearts(currentHealth);
+			
 			Vector2 damageDir = Vector3.Normalize(transform.position - position) * 40f ;
 			m_Rigidbody2D.velocity = Vector2.zero;
 			m_Rigidbody2D.AddForce(damageDir * 10);
-			if (life <= 0)
+			if (currentHealth <= 0)
 			{
 				StartCoroutine(WaitToDead());
 			}

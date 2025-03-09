@@ -7,7 +7,7 @@ public class ScoreManager : MonoBehaviour, IDataPersistence
     public static ScoreManager instance;
     
     public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI shopScoreText;
+    
 
     public static int score;
     // Start is called before the first frame update
@@ -22,7 +22,7 @@ public class ScoreManager : MonoBehaviour, IDataPersistence
     public void Update()
     {
         scoreText.text = score.ToString();
-        shopScoreText.text = score.ToString();
+        
     }
 
     public void ChangeScore(int CoinValue)
@@ -30,7 +30,6 @@ public class ScoreManager : MonoBehaviour, IDataPersistence
      score += CoinValue;
      
      scoreText.text = "X " + score.ToString();
-     shopScoreText.text = "X " + score.ToString();
     }
 
     public void LoadData(GameData data)
