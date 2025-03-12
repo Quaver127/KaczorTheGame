@@ -25,7 +25,7 @@ public class BonusDamageItem : MonoBehaviour
     {
         if (playerInTrigger)
         {
-            if (Input.GetKeyDown(KeyCode.T))
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 attack.dmgValue += 1f;
                 StartCoroutine(ShowDescription());

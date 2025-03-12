@@ -16,6 +16,7 @@ public class Attack : MonoBehaviour
 	public float chargeTime;
 	public bool isCharging = false;
 	
+	
 	public GameObject cam;
 
 	private void Awake()
@@ -32,6 +33,7 @@ public class Attack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+	    
 		if (Input.GetKeyDown(KeyCode.X) && canAttack)
 		{
 			canAttack = false;
@@ -66,8 +68,10 @@ public class Attack : MonoBehaviour
 			throwableWeapon.GetComponent<ThrowableWeapon>().direction = direction; 
 			throwableWeapon.name = "ThrowableWeapon";
 		}
+		
 	}
 
+    
 	IEnumerator AttackCooldown()
 	{
 		yield return new WaitForSeconds(0.25f);

@@ -36,7 +36,12 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 	public int life = 3;
 	public int currentHealth;
 	public bool invincible = false; 
-	public bool canMove = true; 
+	public bool canMove = true;
+	
+	private bool isTaunting = false;
+	private bool canTaunt = true;
+
+	
 
 	private Animator animator;
 	public ParticleSystem particleJumpUp; 
@@ -72,6 +77,14 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 		currentHealth = life;
 		healthUI.SetMaxHearts(life);
 		
+	}
+
+	private void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.T) && m_Grounded && canTaunt)
+		{
+			StartCoroutine(TauntCooldown());
+		}
 	}
 
 	private void FixedUpdate()
@@ -147,7 +160,6 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 		if (canMove) {
 			if (dash && canDash && !isWallSliding && dashUnlocked)
 			{
-				
 				StartCoroutine(DashCooldown());
 			}
 			
@@ -301,6 +313,8 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 			
 		}
 	}
+	
+	
 
 	private void TakeSpikeDamage(int damage)
 	{
@@ -331,7 +345,7 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 			}
 		}
 	}
-
+	
 	IEnumerator DashCooldown()
 	{
 		animator.SetBool("IsDashing", true);
@@ -342,13 +356,33 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 		yield return new WaitForSeconds(0.5f);
 		canDash = true;
 	}
-
+	
 	IEnumerator Stun(float time) 
 	{
 		canMove = false;
 		yield return new WaitForSeconds(time);
 		canMove = true;
 	}
+
+	IEnumerator TauntCooldown()
+	{
+		animator.SetBool("isTaunting", true);
+		invincible = true;
+		isTaunting = true;
+		canTaunt = false;
+		m_Rigidbody2D.constraints = RigidbodyConstraints2D.FreezePosition;
+		canMove = false;
+		yield return new WaitForSeconds(0.3f);
+		isTaunting = false;
+		m_Rigidbody2D.constraints = RigidbodyConstraints2D.None;
+		m_Rigidbody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
+		canMove = true;
+		yield return new WaitForSeconds(0.2f);
+		invincible = false;
+		yield return new WaitForSeconds(2f);
+		canTaunt = true;
+	}
+	
 	IEnumerator MakeInvincible(float time) 
 	{
 		invincible = true;
@@ -390,6 +424,8 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 		yield return new WaitForSeconds(1.1f);
 		SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
 	}
+	
+	
 
 	public void LoadData(GameData data)
 	{
