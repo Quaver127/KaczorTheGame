@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class CharacterController2D : MonoBehaviour, IDataPersistence
 {
@@ -30,7 +31,6 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 	private bool oldWallSlidding = false; 
 	private float prevVelocityX = 0f;
 	private bool canCheck = false; 
-
 	
 	public HealthUI healthUI;
 	public int life = 3;
@@ -39,10 +39,8 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 	public bool canMove = true;
 	
 	private bool isTaunting = false;
-	private bool canTaunt = true;
-
+	public bool canTaunt = true;
 	
-
 	private Animator animator;
 	public ParticleSystem particleJumpUp; 
 	public ParticleSystem particleJumpDown; 
@@ -366,6 +364,7 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 
 	IEnumerator TauntCooldown()
 	{
+		animator.SetInteger("TauntID", Random.Range(0, 4));
 		animator.SetBool("isTaunting", true);
 		invincible = true;
 		isTaunting = true;

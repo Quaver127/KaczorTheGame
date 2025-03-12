@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemySimple (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1458107173046890, guid: 061600cc71b08b947a704a7416146101, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4567782686879236, guid: 061600cc71b08b947a704a7416146101, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.08
@@ -228,9 +232,9 @@ GameObject:
   - component: {fileID: 214647257}
   - component: {fileID: 214647256}
   - component: {fileID: 214647259}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Square
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -478,7 +482,7 @@ GameObject:
   - component: {fileID: 656532490}
   - component: {fileID: 656532489}
   - component: {fileID: 656532488}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Square (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -635,9 +639,9 @@ GameObject:
   - component: {fileID: 990644183}
   - component: {fileID: 990644182}
   - component: {fileID: 990644181}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Square (3)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -992,9 +996,9 @@ GameObject:
   - component: {fileID: 1109131011}
   - component: {fileID: 1109131010}
   - component: {fileID: 1109131009}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Square (5)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2324,6 +2328,10 @@ PrefabInstance:
       propertyPath: healthUI
       value: 
       objectReference: {fileID: 550263130}
+    - target: {fileID: 4162776690770479311, guid: f43158a592f9bad4d8e9dd330d95e2b0, type: 3}
+      propertyPath: m_WhatIsGround.m_Bits
+      value: 576
+      objectReference: {fileID: 0}
     - target: {fileID: 7577414081227207650, guid: f43158a592f9bad4d8e9dd330d95e2b0, type: 3}
       propertyPath: cam
       value: 
