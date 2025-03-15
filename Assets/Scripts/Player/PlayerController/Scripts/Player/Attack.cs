@@ -59,6 +59,10 @@ public class Attack : MonoBehaviour
 			StartCoroutine(DmgReset());
 
 		}
+		else if (Input.GetKeyUp(KeyCode.X) && chargeTime < 2)
+		{
+			chargeTime = 0;
+		}
 
 		if (Input.GetKeyDown(KeyCode.V))
 		{

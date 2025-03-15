@@ -174,7 +174,7 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 
 	public void Heal()
 	{
-		if (Input.GetKey(KeyCode.F) && currentHealth != life && Mana > 0 &&animator.GetBool("IsAttacking") == false && animator.GetBool("IsJumping") == false && animator.GetBool("IsDashing") == false && animator.GetBool("IsDoubleJumping") == false && animator.GetBool("IsWallSliding") == false)
+		if (Input.GetKey(KeyCode.F) && currentHealth != life && Mana > 0 && animator.GetBool("IsAttacking") == false && animator.GetBool("IsJumping") == false && animator.GetBool("IsDashing") == false && animator.GetBool("IsDoubleJumping") == false && animator.GetBool("IsWallSliding") == false)
 		{
 			healing = true;
 			
@@ -416,7 +416,7 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 
 	IEnumerator TauntCooldown()
 	{
-		animator.SetInteger("TauntID", Random.Range(0, 5));
+		animator.SetInteger("TauntID", Random.Range(0, 7));
 		animator.SetBool("isTaunting", true);
 		invincible = true;
 		isTaunting = true;
@@ -430,7 +430,7 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 		canMove = true;
 		yield return new WaitForSeconds(0.2f);
 		invincible = false;
-		//yield return new WaitForSeconds(2f);
+		yield return new WaitForSeconds(2f);
 		canTaunt = true;
 	}
 	
