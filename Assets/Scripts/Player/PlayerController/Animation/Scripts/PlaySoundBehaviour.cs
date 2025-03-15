@@ -14,7 +14,17 @@ public class PlaySoundBehaviour : StateMachineBehaviour
         audioSource = animator.transform.GetComponent<AudioSource>();
         audioSource.clip = audioSound;
         audioSource.loop = loop;
-        audioSource.Play();
+        if (animator.GetBool("IsAttacking"))
+        {
+            audioSource.pitch = UnityEngine.Random.Range(1f, 2f);
+            audioSource.Play();
+        }
+        else
+        {
+            audioSource.pitch = 1f;
+            audioSource.Play();
+        }
+        
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

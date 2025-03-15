@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class CharacterController2D : MonoBehaviour, IDataPersistence
@@ -21,6 +22,7 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 	private Vector3 velocity = Vector3.zero;
 	private float limitFallSpeed = 25f; 
 
+	[Header("Checks")]
 	public bool canDoubleJump = true; 
 	[SerializeField] private float m_DashForce = 25f;
 	private bool canDash = true;
@@ -32,14 +34,27 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 	private float prevVelocityX = 0f;
 	private bool canCheck = false; 
 	
+	[Header("Life")]
 	public HealthUI healthUI;
 	public int life = 3;
 	public int currentHealth;
 	public bool invincible = false; 
 	public bool canMove = true;
 	
+	[Header("Healing")]
+	public bool healing;
+	private float healTimer;
+	[SerializeField] float timeToHeal;
+	
+	[Header("Taunt")]
 	private bool isTaunting = false;
 	public bool canTaunt = true;
+	
+	[Header("Mana Settings")]
+	[SerializeField] Image manaStorage;
+	[SerializeField] public float mana;
+	[SerializeField] private float manaDrainSpeed;
+	[SerializeField] public float manaGain;
 	
 	private Animator animator;
 	public ParticleSystem particleJumpUp; 
@@ -74,7 +89,10 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 	{
 		currentHealth = life;
 		healthUI.SetMaxHearts(life);
+
+		Mana = mana;
 		
+		manaStorage.fillAmount = Mana;
 	}
 
 	private void Update()
@@ -83,6 +101,8 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 		{
 			StartCoroutine(TauntCooldown());
 		}
+		
+		Heal();
 	}
 
 	private void FixedUpdate()
@@ -152,7 +172,28 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 		}
 	}
 
-
+	public void Heal()
+	{
+		if (Input.GetKey(KeyCode.F) && currentHealth != life && Mana > 0 &&animator.GetBool("IsAttacking") == false && animator.GetBool("IsJumping") == false && animator.GetBool("IsDashing") == false && animator.GetBool("IsDoubleJumping") == false && animator.GetBool("IsWallSliding") == false)
+		{
+			healing = true;
+			
+			healTimer += Time.deltaTime;
+			if (healTimer >= timeToHeal)
+			{
+				currentHealth ++;
+				healTimer = 0;
+				healthUI.UpdateHearts(currentHealth);
+			}
+			
+			Mana -= Time.deltaTime * manaDrainSpeed;
+		}
+		else
+		{
+			healing = false;
+			healTimer = 0;
+		}
+	}
 	public void Move(float move, bool jump, bool dash)
 	{
 		if (canMove) {
@@ -311,8 +352,19 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 			
 		}
 	}
-	
-	
+
+	public float Mana
+	{
+		get { return mana; }
+		set
+		{
+			if (mana != value)
+			{
+				mana = Mathf.Clamp(value, 0f, 1f);
+				manaStorage.fillAmount = Mana;
+			}
+		}
+	}
 
 	private void TakeSpikeDamage(int damage)
 	{
@@ -364,7 +416,7 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 
 	IEnumerator TauntCooldown()
 	{
-		animator.SetInteger("TauntID", Random.Range(0, 4));
+		animator.SetInteger("TauntID", Random.Range(0, 5));
 		animator.SetBool("isTaunting", true);
 		invincible = true;
 		isTaunting = true;
@@ -378,7 +430,7 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 		canMove = true;
 		yield return new WaitForSeconds(0.2f);
 		invincible = false;
-		yield return new WaitForSeconds(2f);
+		//yield return new WaitForSeconds(2f);
 		canTaunt = true;
 	}
 	

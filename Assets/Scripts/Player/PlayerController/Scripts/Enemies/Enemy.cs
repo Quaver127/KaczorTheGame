@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour {
 
+	public CharacterController2D controller;
 	public float life = 10;
 	private bool isPlat;
 	private bool isObstacle;
@@ -63,7 +64,7 @@ public class Enemy : MonoBehaviour {
 			StartCoroutine(DestroyEnemy());
 		}
 
-		isPlat = Physics2D.OverlapCircle(fallCheck.position, .2f, 1 << LayerMask.NameToLayer("Default"));
+		isPlat = Physics2D.OverlapCircle(fallCheck.position, .2f, 1 << LayerMask.NameToLayer("Ground"));
 		isObstacle = Physics2D.OverlapCircle(wallCheck.position, .2f, turnLayerMask);
 
 		if (!isHitted && life > 0 && Mathf.Abs(rb.velocity.y) < 0.5f)
@@ -103,6 +104,7 @@ public class Enemy : MonoBehaviour {
 			damage = Mathf.Abs(damage);
 			transform.GetComponent<Animator>().SetBool("Hit", true);
 			life -= damage;
+			controller.Mana += controller.manaGain;
 			rb.velocity = Vector2.zero;
 			rb.AddForce(new Vector2(direction * 500f, 100f));
 			StartCoroutine(HitTime());
