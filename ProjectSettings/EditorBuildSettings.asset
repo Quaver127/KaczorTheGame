@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SceneChangeTest.unity
     guid: 1aa3b487aa7365042a9249fc82b775a0
+  - enabled: 1
+    path: Assets/Scenes/TestTest.unity
+    guid: fdae410dd9b677740ab60f097e43119c
   m_configObjects: {}
