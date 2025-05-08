@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f433e6e2053887949b5c3c794d425487
+guid: 842f5413ce6354141b81cd21de7c0bd3
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 2
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -69,7 +69,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: idle_256_0
+      name: woddle_idle_0
       rect:
         serializedVersion: 2
-        x: 44
-        y: 1
-        width: 174
-        height: 236
+        x: 0
+        y: 0
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,20 +111,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e219a8fb33d45d84989629e1b6bf06c9
-      internalID: -1214476957
+      spriteID: 3976fe163050e264e93176d4579ba514
+      internalID: -940999481
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: idle_256_1
+      name: woddle_idle_1
       rect:
         serializedVersion: 2
-        x: 301
-        y: 1
-        width: 174
-        height: 235
+        x: 256
+        y: 0
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,20 +132,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f860c6aa81305ca449552da8220ee452
-      internalID: -1640552659
+      spriteID: 7d0f21f9a756e664493c8a6c649ad0dd
+      internalID: -1343635981
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: idle_256_2
+      name: woddle_idle_2
       rect:
         serializedVersion: 2
-        x: 556
-        y: 1
-        width: 175
-        height: 233
+        x: 512
+        y: 0
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,20 +153,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 631b03d402aa2104a8ac00bf6d2187d8
-      internalID: -950112054
+      spriteID: 72a30c92052ecaa458536fcb88abbc91
+      internalID: -739325270
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: idle_256_3
+      name: woddle_idle_3
       rect:
         serializedVersion: 2
-        x: 812
-        y: 1
-        width: 174
-        height: 233
+        x: 768
+        y: 0
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,20 +174,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 80380edcc66b4394a9159aa012d0b916
-      internalID: 475014903
+      spriteID: f7d67654e94ce5e4fa06dc7968f5fd5a
+      internalID: 78428392
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: idle_256_4
+      name: woddle_idle_4
       rect:
         serializedVersion: 2
-        x: 1069
-        y: 1
-        width: 174
-        height: 232
+        x: 1024
+        y: 0
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,20 +195,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8019954cb317c704f9b9bd50a3193a91
-      internalID: -780364750
+      spriteID: 404d1460eeddc3e458e6a0691f1b1a12
+      internalID: -254127910
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: idle_256_5
+      name: woddle_idle_5
       rect:
         serializedVersion: 2
-        x: 1324
-        y: 1
-        width: 175
-        height: 230
+        x: 1280
+        y: 0
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -216,20 +216,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 50530c7601ce931488ce27eef517ebd4
-      internalID: 810486350
+      spriteID: 2caaccf3ee8bbb646bfed498407a8e60
+      internalID: -1803784210
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: idle_256_6
+      name: woddle_idle_6
       rect:
         serializedVersion: 2
-        x: 1580
-        y: 1
-        width: 174
-        height: 230
+        x: 1536
+        y: 0
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,20 +237,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f29452248e4fad54a8860dc3e30b2809
-      internalID: 1257198719
+      spriteID: c7a8b46461b84d249969d8fbf13f9a00
+      internalID: -907699184
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: idle_256_7
+      name: woddle_idle_7
       rect:
         serializedVersion: 2
-        x: 1837
-        y: 1
-        width: 174
-        height: 230
+        x: 1792
+        y: 0
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -258,20 +258,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fbf548f92671bb5458d7899244dbfaf6
-      internalID: 1406493820
+      spriteID: 9c85a79aad16f244991bfc2c4fe079f5
+      internalID: -1067247226
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: idle_256_8
+      name: woddle_idle_8
       rect:
         serializedVersion: 2
-        x: 2092
-        y: 1
-        width: 175
-        height: 232
+        x: 2048
+        y: 0
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -279,20 +279,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a3a8c1c46b3373c4eb6a307f18fc0645
-      internalID: -2015286333
+      spriteID: 6b8a717f375bfb74d8a2a30b27139d6b
+      internalID: -2053113626
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: idle_256_9
+      name: woddle_idle_9
       rect:
         serializedVersion: 2
-        x: 2348
-        y: 1
-        width: 174
-        height: 233
+        x: 2304
+        y: 0
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -300,20 +300,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e3c60f2ca4d810b49b5dbf4b857ac2e7
-      internalID: -1762547239
+      spriteID: 26162741056be684eaa26a03debf7346
+      internalID: 863398513
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: idle_256_10
+      name: woddle_idle_10
       rect:
         serializedVersion: 2
-        x: 2605
-        y: 1
-        width: 174
-        height: 233
+        x: 2560
+        y: 0
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -321,20 +321,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 25320bcd4b8cd7b4681105f81782ced0
-      internalID: -600960783
+      spriteID: a666a55622403d243985598568e41210
+      internalID: 1578582705
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: idle_256_11
+      name: woddle_idle_11
       rect:
         serializedVersion: 2
-        x: 2860
-        y: 1
-        width: 175
-        height: 235
+        x: 2816
+        y: 0
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -342,8 +342,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1be07f6f0b4322d4085430246d0f66d2
-      internalID: 1171557891
+      spriteID: 6c559be57f92d574893577699ca503bf
+      internalID: -747173936
       vertices: []
       indices: 
       edges: []
@@ -359,18 +359,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      idle_256_0: -1214476957
-      idle_256_1: -1640552659
-      idle_256_10: -600960783
-      idle_256_11: 1171557891
-      idle_256_2: -950112054
-      idle_256_3: 475014903
-      idle_256_4: -780364750
-      idle_256_5: 810486350
-      idle_256_6: 1257198719
-      idle_256_7: 1406493820
-      idle_256_8: -2015286333
-      idle_256_9: -1762547239
+      woddle_idle_0: -940999481
+      woddle_idle_1: -1343635981
+      woddle_idle_10: 1578582705
+      woddle_idle_11: -747173936
+      woddle_idle_2: -739325270
+      woddle_idle_3: 78428392
+      woddle_idle_4: -254127910
+      woddle_idle_5: -1803784210
+      woddle_idle_6: -907699184
+      woddle_idle_7: -1067247226
+      woddle_idle_8: -2053113626
+      woddle_idle_9: 863398513
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
