@@ -11,8 +11,6 @@ TagManager:
   - Key
   - Door
   - Ground
-  - Hittable
-  - Damage
   layers:
   - Default
   - TransparentFX
@@ -25,7 +23,7 @@ TagManager:
   - Key
   - Ground
   - Enemy
-  - Destructible
+  - 
   - 
   - 
   - 

@@ -1702,15 +1702,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 86470503922643680, guid: ff220ed6d4c0b314b8d73db5d48bf32e, type: 3}
       propertyPath: bounceForce
-      value: 30
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 3549713800918757231, guid: ff220ed6d4c0b314b8d73db5d48bf32e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 100.06
+      value: 98.32
       objectReference: {fileID: 0}
     - target: {fileID: 3549713800918757231, guid: ff220ed6d4c0b314b8d73db5d48bf32e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.39
+      value: 1.79
       objectReference: {fileID: 0}
     - target: {fileID: 3549713800918757231, guid: ff220ed6d4c0b314b8d73db5d48bf32e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3616,6 +3616,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3705703613513523965, guid: 20589b77d6f3c494a84ef4c975c37579, type: 3}
       propertyPath: m_LocalPosition.x
+<<<<<<< HEAD
 <<<<<<< Updated upstream
       value: 94.13
       objectReference: {fileID: 0}
@@ -3643,6 +3644,13 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 10.35
 >>>>>>> Stashed changes
+=======
+      value: 65.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3705703613513523965, guid: 20589b77d6f3c494a84ef4c975c37579, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 12.6
+>>>>>>> parent of a5deb01 (BreakableObjects)
       objectReference: {fileID: 0}
     - target: {fileID: 3705703613513523965, guid: 20589b77d6f3c494a84ef4c975c37579, type: 3}
       propertyPath: m_LocalPosition.z

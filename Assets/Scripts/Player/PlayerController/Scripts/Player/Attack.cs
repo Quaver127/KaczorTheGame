@@ -16,7 +16,7 @@ public class Attack : MonoBehaviour
 	public float chargeTime;
 	public bool isCharging = false;
 	
-	public GameObject damageTrigger;	
+	
 	public GameObject cam;
 
 	private void Awake()
@@ -37,7 +37,6 @@ public class Attack : MonoBehaviour
 		{
 			canAttack = false;
 			animator.SetBool("IsAttacking", true);
-			damageTrigger.SetActive(true);
 			StartCoroutine(AttackCooldown());
 		}
 
@@ -78,10 +77,7 @@ public class Attack : MonoBehaviour
     
 	IEnumerator AttackCooldown()
 	{
-		yield return new WaitForSeconds(0.1f);
-		damageTrigger.SetActive(false);
-		yield return new WaitForSeconds(0.24f);
-		
+		yield return new WaitForSeconds(0.25f);
 		canAttack = true;
 	}
 

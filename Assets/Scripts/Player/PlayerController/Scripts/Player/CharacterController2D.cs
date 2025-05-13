@@ -13,9 +13,8 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 	[SerializeField] private bool m_AirControl = false;							
 	[SerializeField] private LayerMask m_WhatIsGround;							
 	[SerializeField] private Transform m_GroundCheck;							
-	[SerializeField] private Transform m_WallCheck;
+	[SerializeField] private Transform m_WallCheck;								
 
-	
 	const float k_GroundedRadius = .2f; 
 	private bool m_Grounded;            
 	private Rigidbody2D m_Rigidbody2D;
