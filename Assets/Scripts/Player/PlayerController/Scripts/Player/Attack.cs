@@ -18,6 +18,7 @@ public class Attack : MonoBehaviour
 	
 	
 	public GameObject cam;
+	public GameObject damageTrigger;
 
 	private void Awake()
 	{
@@ -37,6 +38,7 @@ public class Attack : MonoBehaviour
 		{
 			canAttack = false;
 			animator.SetBool("IsAttacking", true);
+			damageTrigger.SetActive(true);
 			StartCoroutine(AttackCooldown());
 		}
 
@@ -77,6 +79,8 @@ public class Attack : MonoBehaviour
     
 	IEnumerator AttackCooldown()
 	{
+		yield return new WaitForSeconds(0.01f);
+		damageTrigger.SetActive(false);
 		yield return new WaitForSeconds(0.25f);
 		canAttack = true;
 	}

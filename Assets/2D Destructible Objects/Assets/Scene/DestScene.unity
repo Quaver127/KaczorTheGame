@@ -328,7 +328,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1706647619}
   - component: {fileID: 1706647620}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: DamageTrigger
   m_TagString: Damage
   m_Icon: {fileID: 0}
