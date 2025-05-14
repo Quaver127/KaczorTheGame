@@ -1702,6 +1702,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 735913338897261986, guid: 78cfc044f987cc343a1503c5b4eb50bb, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 735913338897261986, guid: 78cfc044f987cc343a1503c5b4eb50bb, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3847738097053711136, guid: 78cfc044f987cc343a1503c5b4eb50bb, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 100.00006
+      objectReference: {fileID: 0}
+    - target: {fileID: 3847738097053711136, guid: 78cfc044f987cc343a1503c5b4eb50bb, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5627631657913335525, guid: 78cfc044f987cc343a1503c5b4eb50bb, type: 3}
       propertyPath: m_Name
       value: UI
@@ -1709,7 +1725,31 @@ PrefabInstance:
     - target: {fileID: 6073058085897969972, guid: 78cfc044f987cc343a1503c5b4eb50bb, type: 3}
       propertyPath: fullHeartSprite
       value: 
-      objectReference: {fileID: 21300000, guid: ecffd1032b2220e4d87936304a152feb, type: 3}
+      objectReference: {fileID: 21300000, guid: 96d5673a9bbaa3f46a97e154ccdb8958, type: 3}
+    - target: {fileID: 6073058085897969972, guid: 78cfc044f987cc343a1503c5b4eb50bb, type: 3}
+      propertyPath: emptyHeartSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ab31d894ec3f1c34080f4bb465e3183a, type: 3}
+    - target: {fileID: 6441318344106833900, guid: 78cfc044f987cc343a1503c5b4eb50bb, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -302.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6441318344106833900, guid: 78cfc044f987cc343a1503c5b4eb50bb, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 58.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6535134116926668849, guid: 78cfc044f987cc343a1503c5b4eb50bb, type: 3}
+      propertyPath: m_Spacing
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6535134116926668849, guid: 78cfc044f987cc343a1503c5b4eb50bb, type: 3}
+      propertyPath: m_ChildScaleWidth
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6535134116926668849, guid: 78cfc044f987cc343a1503c5b4eb50bb, type: 3}
+      propertyPath: m_ChildControlWidth
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7464760816399089641, guid: 78cfc044f987cc343a1503c5b4eb50bb, type: 3}
       propertyPath: m_Camera
       value: 
