@@ -10,7 +10,7 @@ public class SceneChanger : MonoBehaviour
 
     private void Start()
     {
-        fade = FindObjectOfType<FadeInOut>();
+        
     }
 
     public IEnumerator _ChangeScene()

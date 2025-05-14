@@ -23,16 +23,23 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 	private float limitFallSpeed = 25f; 
 
 	[Header("Checks")]
+	public bool canWallJump = true;
 	public bool canDoubleJump = true; 
 	[SerializeField] private float m_DashForce = 25f;
 	private bool canDash = true;
-	public static bool dashUnlocked = false;
 	private bool isDashing = false; 
 	private bool m_IsWall = false; 
 	private bool isWallSliding = false; 
 	private bool oldWallSlidding = false; 
 	private float prevVelocityX = 0f;
 	private bool canCheck = false; 
+	
+	[Header("Unlock Checks")]
+	public static bool dashUnlocked = true;
+	public static bool doubleJumpUnlocked = false;
+	public static bool wallJumpUnlocked = false;
+	
+	
 	
 	[Header("Life")]
 	public HealthUI healthUI;
@@ -122,7 +129,11 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 					OnLandEvent.Invoke();
 					if (!m_IsWall && !isDashing) 
 						particleJumpDown.Play();
-					canDoubleJump = true;
+					if (doubleJumpUnlocked)
+					{
+						canDoubleJump = true;
+					}
+					
 					if (m_Rigidbody2D.velocity.y < 0f)
 						limitVelOnWallJump = false;
 				}
@@ -237,11 +248,15 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 				animator.SetBool("JumpUp", true);
 				m_Grounded = false;
 				m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
-				canDoubleJump = true;
+				if (doubleJumpUnlocked == true)
+				{
+					canDoubleJump = true;	
+				}
+				
 				particleJumpDown.Play();
 				particleJumpUp.Play();
 			}
-			else if (!m_Grounded && jump && canDoubleJump && !isWallSliding)
+			else if (!m_Grounded && jump && canDoubleJump && !isWallSliding )
 			{
 				canDoubleJump = false;
 				m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, 0);
@@ -249,7 +264,7 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 				animator.SetBool("IsDoubleJumping", true);
 			}
 
-			else if (m_IsWall && !m_Grounded)
+			else if (m_IsWall && !m_Grounded && wallJumpUnlocked)
 			{
 				if (!oldWallSlidding && m_Rigidbody2D.velocity.y < 0 || isDashing)
 				{
@@ -257,7 +272,10 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 					m_WallCheck.localPosition = new Vector3(-m_WallCheck.localPosition.x, m_WallCheck.localPosition.y, 0);
 					Flip();
 					StartCoroutine(WaitToCheck(0.1f));
-					canDoubleJump = true;
+					if (doubleJumpUnlocked)
+					{
+						canDoubleJump = true;
+					}
 					animator.SetBool("IsWallSliding", true);
 				}
 				isDashing = false;
@@ -283,7 +301,10 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 					m_Rigidbody2D.AddForce(new Vector2(transform.localScale.x * m_JumpForce *1.2f, m_JumpForce));
 					jumpWallStartX = transform.position.x;
 					limitVelOnWallJump = true;
-					canDoubleJump = true;
+					if (doubleJumpUnlocked)
+					{
+						canDoubleJump = true;	
+					}
 					isWallSliding = false;
 					animator.SetBool("IsWallSliding", false);
 					oldWallSlidding = false;
@@ -296,7 +317,10 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 					animator.SetBool("IsWallSliding", false);
 					oldWallSlidding = false;
 					m_WallCheck.localPosition = new Vector3(Mathf.Abs(m_WallCheck.localPosition.x), m_WallCheck.localPosition.y, 0);
-					canDoubleJump = true;
+					if (doubleJumpUnlocked)
+					{ 
+						canDoubleJump = true;
+					}
 					StartCoroutine(DashCooldown());
 				}
 			}
@@ -306,7 +330,10 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 				animator.SetBool("IsWallSliding", false);
 				oldWallSlidding = false;
 				m_WallCheck.localPosition = new Vector3(Mathf.Abs(m_WallCheck.localPosition.x), m_WallCheck.localPosition.y, 0);
-				canDoubleJump = true;
+				if (doubleJumpUnlocked)
+				{
+					canDoubleJump = true;
+				}
 			}
 		}
 	}
@@ -422,10 +449,12 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 		isTaunting = true;
 		canTaunt = false;
 		m_Rigidbody2D.constraints = RigidbodyConstraints2D.FreezePosition;
+		m_Rigidbody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
 		canMove = false;
 		yield return new WaitForSeconds(0.3f);
 		isTaunting = false;
 		m_Rigidbody2D.constraints = RigidbodyConstraints2D.None;
+		yield return new WaitForSeconds(0.01f);
 		m_Rigidbody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
 		canMove = true;
 		yield return new WaitForSeconds(0.2f);
@@ -457,7 +486,10 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 	IEnumerator WaitToEndSliding()
 	{
 		yield return new WaitForSeconds(0.1f);
-		canDoubleJump = true;
+		if (doubleJumpUnlocked)
+		{
+			canDoubleJump = true;
+		}
 		isWallSliding = false;
 		animator.SetBool("IsWallSliding", false);
 		oldWallSlidding = false;

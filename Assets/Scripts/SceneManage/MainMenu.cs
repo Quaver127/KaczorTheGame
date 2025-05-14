@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
+    FadeInOut fade;
     
     [Header("Menu Buttons")]
     [SerializeField] private Button newGameButton;
@@ -20,6 +21,8 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
+        fade = FindObjectOfType<FadeInOut>();
+        
         if (!DataPersistenceManager.instance.hasGameData())
         {
             continueGameButton.interactable = false;
@@ -37,23 +40,34 @@ public class MainMenu : MonoBehaviour
     
     public void QuitGame ()
     {
-        Application.Quit();
+        StartCoroutine(Quit());
     }
-    
+
+
+
     
     IEnumerator NewGame()
-    { 
+    {   
+        fade.FadeIn();
         eye.SetActive(true);
-        yield return new WaitForSeconds(0.33f);
+        yield return new WaitForSeconds(3f);
         DataPersistenceManager.instance.NewGame();
         SceneManager.LoadSceneAsync("TestWorld");
     }
     
     IEnumerator ContinueGame()
-    { 
+    {
+        fade.FadeIn();
         eye.SetActive(true);
-        yield return new WaitForSeconds(0.33f);
+        yield return new WaitForSeconds(3f);
         SceneManager.LoadSceneAsync("TestWorld");
+    }
+    
+    IEnumerator Quit()
+    {
+        fade.FadeIn();
+        yield return new WaitForSeconds(3f);
+        Application.Quit();
     }
 
 }
