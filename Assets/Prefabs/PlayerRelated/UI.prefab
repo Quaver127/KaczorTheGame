@@ -113,8 +113,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heartPrefab: {fileID: 2447234361470637695, guid: bb7648d4a178b1e459d34bad934933ab, type: 3}
-  fullHeartSprite: {fileID: 21300000, guid: 8bcda7d2e5bde244a95c4119fc1f5521, type: 3}
-  emptyHeartSprite: {fileID: 21300000, guid: 13056e1696dfe6d499bf745ee5d92e24, type: 3}
+  fullHeartSprite: {fileID: 21300000, guid: ecffd1032b2220e4d87936304a152feb, type: 3}
+  emptyHeartSprite: {fileID: 21300000, guid: 96ae5d0c23d10154e803180c8578dc25, type: 3}
 --- !u!1 &3916034391251493546
 GameObject:
   m_ObjectHideFlags: 0
