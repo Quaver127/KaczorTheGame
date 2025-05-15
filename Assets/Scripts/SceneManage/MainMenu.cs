@@ -15,8 +15,12 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private Button QuitButton;
     [SerializeField] private Button QuackButton;
     
+    [Header("Options Buttons")]
+    [SerializeField] private Button BackButton;
+    
     [Header("Misc Objects")]
     [SerializeField] private GameObject eye;
+    [SerializeField] private GameObject optionsPanel;
 
 
     private void Start()
@@ -37,14 +41,30 @@ public class MainMenu : MonoBehaviour
     {
         StartCoroutine(ContinueGame());
     }
+
+    public void Options()
+    {
+        newGameButton.gameObject.SetActive(false);
+        continueGameButton.gameObject.SetActive(false);
+        OptionsButton.gameObject.SetActive(false);
+        QuitButton.gameObject.SetActive(false);
+        QuackButton.gameObject.SetActive(false);
+    }
+
+    public void OptionsBack()
+    {
+        newGameButton.gameObject.SetActive(true);
+        continueGameButton.gameObject.SetActive(true);
+        OptionsButton.gameObject.SetActive(true);
+        QuitButton.gameObject.SetActive(true);
+        QuackButton.gameObject.SetActive(true);
+        optionsPanel.SetActive(false);
+    }
     
     public void QuitGame ()
     {
         StartCoroutine(Quit());
     }
-
-
-
     
     IEnumerator NewGame()
     {   
@@ -62,7 +82,7 @@ public class MainMenu : MonoBehaviour
         yield return new WaitForSeconds(3f);
         SceneManager.LoadSceneAsync("TestWorld");
     }
-    
+
     IEnumerator Quit()
     {
         fade.FadeIn();
