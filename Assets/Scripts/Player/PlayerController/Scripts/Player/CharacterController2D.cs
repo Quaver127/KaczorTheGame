@@ -36,7 +36,7 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 	
 	[Header("Unlock Checks")]
 	public static bool dashUnlocked = true;
-	public static bool doubleJumpUnlocked = false;
+	public static bool doubleJumpUnlocked = true;
 	public static bool wallJumpUnlocked = false;
 	
 	
