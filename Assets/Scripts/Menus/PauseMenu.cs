@@ -11,6 +11,8 @@ public class PauseMenu : MonoBehaviour, IDataPersistence
     [SerializeField] private GameObject manaContainer;
     [SerializeField] private GameObject ScoreContainer;
     [SerializeField] private GameObject HpContainer;
+    [SerializeField] private GameObject optionsMenu;
+   // [SerializeField] private GameObject duckWalk;
     private bool isPaused = false;
 
     public void Start()
@@ -35,13 +37,13 @@ public class PauseMenu : MonoBehaviour, IDataPersistence
 
     public void PauseGame()
     {
-        Debug.Log("Escape was pressed");
         pauseMenu.SetActive(true);
         manaContainer.SetActive(false);
         ScoreContainer.SetActive(false);
         HpContainer.SetActive(false);
         Time.timeScale = 0; 
         isPaused = true;
+        Cursor.visible = true;
     }
     
     public void Resume()
@@ -52,6 +54,7 @@ public class PauseMenu : MonoBehaviour, IDataPersistence
         HpContainer.SetActive(true);
         Time.timeScale = 1;
         isPaused = false;
+        Cursor.visible = false;
     }
 
     public void Save()
@@ -61,7 +64,14 @@ public class PauseMenu : MonoBehaviour, IDataPersistence
 
     public void Options()
     {
-        
+        pauseMenu.SetActive(false);
+        optionsMenu.SetActive(true);
+    }
+
+    public void OptionsBack()
+    {
+        optionsMenu.SetActive(false);
+        pauseMenu.SetActive(true);
     }
 
     public void Quit(int sceneIndex)
