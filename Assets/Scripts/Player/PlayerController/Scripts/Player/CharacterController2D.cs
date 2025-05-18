@@ -8,6 +8,8 @@ using Random = UnityEngine.Random;
 
 public class CharacterController2D : MonoBehaviour, IDataPersistence
 {
+	public PauseMenu pauseCheck;
+	
 	[SerializeField] private float m_JumpForce = 400f;							
 	[Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;	
 	[SerializeField] private bool m_AirControl = false;							
@@ -110,6 +112,17 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 		}
 		
 		Heal();
+
+		if (pauseCheck.isPaused)
+		{
+			canMove = false;
+			animator.SetBool("canMove", false);
+		}
+		else
+		{
+			canMove = true;
+			animator.SetBool("canMove", true);
+		}
 	}
 
 	private void FixedUpdate()
