@@ -217,6 +217,7 @@ GameObject:
   - component: {fileID: 1042533801297516330}
   - component: {fileID: 8444325674883886021}
   - component: {fileID: 3132994874739713087}
+  - component: {fileID: 597056885925957088}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -234,7 +235,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.84, y: 4.81, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2691214, y: 1.2126249, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8988431371136309761}
@@ -259,6 +260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 783f8b7882d2d2a42a5b76de9179978f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseCheck: {fileID: 0}
   m_JumpForce: 850
   m_MovementSmoothing: 0.05
   m_AirControl: 1
@@ -277,6 +279,26 @@ MonoBehaviour:
   canMove: 1
   healing: 0
   timeToHeal: 1
+  Duck: {fileID: 7070744738345719039}
+  audioSource: {fileID: 8444325674883886021}
+  clip: {fileID: 8300000, guid: 8a41d586c5dbc504bb5f379ead7f1b28, type: 3}
+  tauntClips:
+  - {fileID: 7400000, guid: 38b49fcc27cd2924a8909f46aad1c496, type: 2}
+  - {fileID: 7400000, guid: 8ba49f0adeaf2914bb300f5572d05ba4, type: 2}
+  - {fileID: 7400000, guid: 2b8c1cc4f1fd22d48a163163508876f1, type: 2}
+  - {fileID: 7400000, guid: e1422dbda2316294bb3cf5161d384443, type: 2}
+  - {fileID: 7400000, guid: 0b61c82293f4f9a4980b753010fe61dd, type: 2}
+  - {fileID: 7400000, guid: 767d78b0a1c60ea4b8b7ee829e771a3c, type: 2}
+  - {fileID: 7400000, guid: aed877482d11992478dafb30a23dac96, type: 2}
+  - {fileID: 7400000, guid: 2cf072ec8b28d5244a99c9b554684623, type: 2}
+  - {fileID: 7400000, guid: e9a4662b88163f94abe26d227029461d, type: 2}
+  - {fileID: 7400000, guid: 6ab202a21a410c94aadc5780fe19a23f, type: 2}
+  - {fileID: 7400000, guid: f9343d24d713d5643bee6d2db6464539, type: 2}
+  - {fileID: 7400000, guid: d0c240cf5feb54e429cf05e3e3b550f4, type: 2}
+  - {fileID: 7400000, guid: 5764eea9a9b8e1441bb8dfd56b5d7d14, type: 2}
+  - {fileID: 7400000, guid: b9c82345c148f4c42aa5864b0b421d5b, type: 2}
+  - {fileID: 7400000, guid: f094a91310210c64e9fd7da265978e96, type: 2}
+  totalTaunts: 15
   canTaunt: 1
   manaStorage: {fileID: 0}
   mana: 1
@@ -398,7 +420,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.9985716, y: 2.249375}
+  m_Size: {x: 2.56, y: 2.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -507,7 +529,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 1.2999992
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -599,6 +621,18 @@ MonoBehaviour:
   boxMask:
     serializedVersion: 2
     m_Bits: 64
+--- !u!114 &597056885925957088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5382760954116324236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 256308d4a3ede3a44b3753b97cf71068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7224972169949929888
 GameObject:
   m_ObjectHideFlags: 0
@@ -5581,7 +5615,7 @@ Transform:
   m_GameObject: {fileID: 7821171206685430539}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.35, y: -0.3, z: 0}
+  m_LocalPosition: {x: 0.57, y: -0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

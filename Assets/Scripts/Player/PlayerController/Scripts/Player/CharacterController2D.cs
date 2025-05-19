@@ -5,10 +5,13 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
+using System.Collections.Generic;
 
 public class CharacterController2D : MonoBehaviour, IDataPersistence
 {
 	public PauseMenu pauseCheck;
+	
+	
 	
 	[SerializeField] private float m_JumpForce = 400f;							
 	[Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;	
@@ -48,7 +51,7 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 	public int life = 3;
 	public int currentHealth;
 	public bool invincible = false; 
-	public bool canMove = true;
+	
 	
 	[Header("Healing")]
 	public bool healing;
@@ -56,6 +59,12 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 	[SerializeField] float timeToHeal;
 	
 	[Header("Taunt")]
+	private AnimatorOverrideController overrideController;
+	public Animator Duck;
+	public AudioSource audioSource;
+	public AudioClip clip;
+	public List<AnimationClip> tauntClips;
+	[SerializeField] int totalTaunts = 15;
 	private bool isTaunting = false;
 	public bool canTaunt = true;
 	
@@ -68,7 +77,7 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 	private Animator animator;
 	public ParticleSystem particleJumpUp; 
 	public ParticleSystem particleJumpDown; 
-
+	public bool canMove = true;
 	private float jumpWallStartX = 0;
 	private float jumpWallDistX = 0; 
 	private bool limitVelOnWallJump = false; 
@@ -96,6 +105,9 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 
 	private void Start()
 	{
+		overrideController = new AnimatorOverrideController(Duck.runtimeAnimatorController);
+		Duck.runtimeAnimatorController = overrideController;
+		
 		currentHealth = life;
 		healthUI.SetMaxHearts(life);
 
@@ -106,6 +118,13 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 
 	private void Update()
 	{
+		
+		if (Input.GetKeyDown(KeyCode.Space))
+		{
+			Time.timeScale = 0.25f;
+		}
+		
+		
 		if (Input.GetKeyDown(KeyCode.T) && m_Grounded && canTaunt)
 		{
 			StartCoroutine(TauntCooldown());
@@ -115,15 +134,17 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 
 		if (pauseCheck.isPaused)
 		{
-			canMove = false;
+			m_Rigidbody2D.constraints = RigidbodyConstraints2D.FreezePosition;
 			animator.SetBool("canMove", false);
 		}
 		else
 		{
-			canMove = true;
+			m_Rigidbody2D.constraints = RigidbodyConstraints2D.None;
+			m_Rigidbody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
 			animator.SetBool("canMove", true);
 		}
 	}
+	
 
 	private void FixedUpdate()
 	{
@@ -217,6 +238,18 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 			healing = false;
 			healTimer = 0;
 		}
+	}
+	
+	public void PlayRandomTaunt()
+	{
+		if (tauntClips == null || tauntClips.Count == 0) return;
+
+		int index = Random.Range(0, tauntClips.Count);
+     
+		audioSource.PlayOneShot(clip);
+		overrideController["Taunt"] = tauntClips[index];
+        
+		Duck.SetTrigger("Taunt");
 	}
 	public void Move(float move, bool jump, bool dash)
 	{
@@ -456,15 +489,13 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 
 	IEnumerator TauntCooldown()
 	{
-		animator.SetInteger("TauntID", Random.Range(0, 7));
-		animator.SetBool("isTaunting", true);
+		PlayRandomTaunt();
+		m_Rigidbody2D.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
+		canMove = false;
 		invincible = true;
 		isTaunting = true;
 		canTaunt = false;
-		m_Rigidbody2D.constraints = RigidbodyConstraints2D.FreezePosition;
-		m_Rigidbody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
-		canMove = false;
-		yield return new WaitForSeconds(0.3f);
+		yield return new WaitForSeconds(0.45f);
 		isTaunting = false;
 		m_Rigidbody2D.constraints = RigidbodyConstraints2D.None;
 		yield return new WaitForSeconds(0.01f);
@@ -472,7 +503,7 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 		canMove = true;
 		yield return new WaitForSeconds(0.2f);
 		invincible = false;
-		yield return new WaitForSeconds(2f);
+		//yield return new WaitForSeconds(0.1f);
 		canTaunt = true;
 	}
 	
@@ -511,8 +542,9 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 
 	IEnumerator WaitToDead()
 	{
-		animator.SetBool("IsDead", true);
+		//m_Rigidbody2D.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
 		canMove = false;
+		animator.SetBool("IsDead", true);
 		invincible = true;
 		GetComponent<Attack>().enabled = false;
 		yield return new WaitForSeconds(0.4f);

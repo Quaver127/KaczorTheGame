@@ -488,6 +488,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1305023537402539126, guid: ff0a1b5bef8a6f541b88dff38ddda685, type: 3}
   m_PrefabInstance: {fileID: 3489214240486947205}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &987609093 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1532026909187072048, guid: ff0a1b5bef8a6f541b88dff38ddda685, type: 3}
+  m_PrefabInstance: {fileID: 3489214240486947205}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 454f5db965c937d479d155ce1d124b99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &990644180
 GameObject:
   m_ObjectHideFlags: 0
@@ -1465,9 +1476,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 65030028487312064}
     - target: {fileID: 1532026909187072048, guid: ff0a1b5bef8a6f541b88dff38ddda685, type: 3}
+      propertyPath: ZaWarudo
+      value: 
+      objectReference: {fileID: 8300000, guid: 6e914169221977b448ee01e6020fa7f1, type: 3}
+    - target: {fileID: 1532026909187072048, guid: ff0a1b5bef8a6f541b88dff38ddda685, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 9144029407878268702}
+    - target: {fileID: 1532026909187072048, guid: ff0a1b5bef8a6f541b88dff38ddda685, type: 3}
       propertyPath: optionsMenu
       value: 
       objectReference: {fileID: 695660727}
+    - target: {fileID: 1532026909187072048, guid: ff0a1b5bef8a6f541b88dff38ddda685, type: 3}
+      propertyPath: TimeFlowsAgain
+      value: 
+      objectReference: {fileID: 8300000, guid: 73c40ea7145b08548955efc70e9a0701, type: 3}
     - target: {fileID: 1887981530763288147, guid: ff0a1b5bef8a6f541b88dff38ddda685, type: 3}
       propertyPath: m_Name
       value: UI
@@ -1821,9 +1844,17 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6340194472073595503, guid: 20589b77d6f3c494a84ef4c975c37579, type: 3}
+      propertyPath: life
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6340194472073595503, guid: 20589b77d6f3c494a84ef4c975c37579, type: 3}
       propertyPath: healthUI
       value: 
       objectReference: {fileID: 7528418401630699279}
+    - target: {fileID: 6340194472073595503, guid: 20589b77d6f3c494a84ef4c975c37579, type: 3}
+      propertyPath: pauseCheck
+      value: 
+      objectReference: {fileID: 987609093}
     - target: {fileID: 6340194472073595503, guid: 20589b77d6f3c494a84ef4c975c37579, type: 3}
       propertyPath: manaStorage
       value: 
@@ -1998,6 +2029,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 783f8b7882d2d2a42a5b76de9179978f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &9144029407878268702 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8444325674883886021, guid: 20589b77d6f3c494a84ef4c975c37579, type: 3}
+  m_PrefabInstance: {fileID: 7032586338949762022}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
