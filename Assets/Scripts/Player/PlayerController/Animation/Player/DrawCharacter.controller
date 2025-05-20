@@ -444,7 +444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ff4409926f4822409c8003d703f6dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSound: {fileID: 8300000, guid: 4eab8e2a14c101c4a84ee2bfe6966674, type: 3}
+  audioSound: {fileID: 8300000, guid: d44d00349c798c5448698139f24b8c4c, type: 3}
   loop: 0
 --- !u!114 &-480471806394875632
 MonoBehaviour:
@@ -524,7 +524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ff4409926f4822409c8003d703f6dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSound: {fileID: 8300000, guid: 2ca241f9537d2de4e9a6dab27ac564ff, type: 3}
+  audioSound: {fileID: 8300000, guid: 6b4318e8c46fddf44b9ea7261b120b50, type: 3}
   loop: 0
 --- !u!91 &9100000
 AnimatorController:
@@ -783,7 +783,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bddbe7cb6a305140b8c616bb9082a74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioJump: {fileID: 8300000, guid: 2ca241f9537d2de4e9a6dab27ac564ff, type: 3}
+  audioJump: {fileID: 8300000, guid: 6b4318e8c46fddf44b9ea7261b120b50, type: 3}
   audioLand: {fileID: 8300000, guid: 378aa192a9d28244897bc732792ca074, type: 3}
 --- !u!1102 &2508532495062516819
 AnimatorState:

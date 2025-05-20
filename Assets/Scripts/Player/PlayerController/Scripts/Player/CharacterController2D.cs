@@ -494,6 +494,7 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 
 	IEnumerator TauntCooldown()
 	{
+		audioSource.pitch = 1;
 		PlayRandomTaunt();
 		m_Rigidbody2D.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
 		canMove = false;
