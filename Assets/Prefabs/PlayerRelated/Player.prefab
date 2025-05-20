@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3872343079490442186}
   - component: {fileID: 3990772322430358708}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: DamageTrigger
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -277,7 +277,7 @@ MonoBehaviour:
   healing: 0
   timeToHeal: 1
   Duck: {fileID: 7070744738345719039}
-  audioSource: {fileID: 8444325674883886021}
+  audioSource: {fileID: 0}
   clip: {fileID: 8300000, guid: 8a41d586c5dbc504bb5f379ead7f1b28, type: 3}
   tauntClips:
   - {fileID: 7400000, guid: 38b49fcc27cd2924a8909f46aad1c496, type: 2}
@@ -504,8 +504,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.008362532, y: -0.30288768}
-  m_Size: {x: 0.767076, y: 1.9457755}
+  m_Offset: {x: 0.024734171, y: -0.27778006}
+  m_Size: {x: 1.0538921, y: 1.9959885}
   m_Direction: 0
 --- !u!82 &8444325674883886021
 AudioSource:
@@ -516,7 +516,7 @@ AudioSource:
   m_GameObject: {fileID: 5382760954116324236}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 12c327b1af3254c489aa28d5311a96bf, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1

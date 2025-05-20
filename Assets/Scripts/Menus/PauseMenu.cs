@@ -63,7 +63,6 @@ public class PauseMenu : MonoBehaviour, IDataPersistence
         ScoreContainer.SetActive(true);
         HpContainer.SetActive(true);
         isPaused = false;
-        Time.timeScale = 1f;
         StartCoroutine(LerpTimeScale(Time.timeScale, 1f, 1.9f));
         Cursor.visible = false;
     }
