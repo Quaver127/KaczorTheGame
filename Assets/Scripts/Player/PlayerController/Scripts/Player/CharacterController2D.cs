@@ -25,9 +25,9 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 	private Rigidbody2D m_Rigidbody2D;
 	private bool m_FacingRight = true;  
 	private Vector3 velocity = Vector3.zero;
-	private float limitFallSpeed = 25f; 
+	private float limitFallSpeed = 25f;
 
-	[Header("Checks")]
+	[Header("Checks")] 
 	public bool canWallJump = true;
 	public bool canDoubleJump = true; 
 	[SerializeField] private float m_DashForce = 25f;
@@ -93,6 +93,8 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 
 	private void Awake()
 	{
+		audioSource.ignoreListenerPause = true;
+		
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
 		animator = GetComponent<Animator>();
 
@@ -119,12 +121,6 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 	private void Update()
 	{
 		
-		if (Input.GetKeyDown(KeyCode.Space))
-		{
-			Time.timeScale = 0.25f;
-		}
-		
-		
 		if (Input.GetKeyDown(KeyCode.T) && m_Grounded && canTaunt)
 		{
 			StartCoroutine(TauntCooldown());
@@ -134,13 +130,12 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 
 		if (pauseCheck.isPaused)
 		{
-			m_Rigidbody2D.constraints = RigidbodyConstraints2D.FreezePosition;
+			audioSource.Pause();
 			animator.SetBool("canMove", false);
 		}
 		else
 		{
-			m_Rigidbody2D.constraints = RigidbodyConstraints2D.None;
-			m_Rigidbody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
+			audioSource.UnPause();
 			animator.SetBool("canMove", true);
 		}
 	}
@@ -219,18 +214,27 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 
 	public void Heal()
 	{
-		if (Input.GetKey(KeyCode.F) && currentHealth != life && Mana > 0 && animator.GetBool("IsAttacking") == false && animator.GetBool("IsJumping") == false && animator.GetBool("IsDashing") == false && animator.GetBool("IsDoubleJumping") == false && animator.GetBool("IsWallSliding") == false)
+		if (Input.GetKey(KeyCode.F)
+		    && currentHealth != life
+		    && Mana > 0
+		    && animator.GetBool("IsAttacking") == false
+		    && animator.GetBool("IsJumping") == false
+		    && animator.GetBool("IsDashing") == false
+		    && animator.GetBool("IsDoubleJumping") == false
+		    && animator.GetBool("IsWallSliding") == false
+		    && Mathf.Abs(m_Rigidbody2D.velocity.x) < 0.01f
+		    && Mathf.Abs(m_Rigidbody2D.velocity.y) < 0.01f)
 		{
 			healing = true;
-			
+
 			healTimer += Time.deltaTime;
 			if (healTimer >= timeToHeal)
 			{
-				currentHealth ++;
+				currentHealth++;
 				healTimer = 0;
 				healthUI.UpdateHearts(currentHealth);
 			}
-			
+
 			Mana -= Time.deltaTime * manaDrainSpeed;
 		}
 		else
@@ -254,6 +258,7 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 	public void Move(float move, bool jump, bool dash)
 	{
 		if (canMove) {
+			
 			if (dash && canDash && !isWallSliding && dashUnlocked)
 			{
 				StartCoroutine(DashCooldown());

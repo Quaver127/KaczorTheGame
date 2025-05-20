@@ -50,7 +50,7 @@ public class PauseMenu : MonoBehaviour, IDataPersistence
         ScoreContainer.SetActive(false);
         HpContainer.SetActive(false);
         isPaused = true;
-        StartCoroutine(LerpTimeScale(Time.timeScale, 0f, 2f)); // Gradually pause
+        StartCoroutine(LerpTimeScale(Time.timeScale, 0f, 2f)); 
         Cursor.visible = true;
     }
     
@@ -63,6 +63,7 @@ public class PauseMenu : MonoBehaviour, IDataPersistence
         ScoreContainer.SetActive(true);
         HpContainer.SetActive(true);
         isPaused = false;
+        Time.timeScale = 1f;
         StartCoroutine(LerpTimeScale(Time.timeScale, 1f, 1.9f));
         Cursor.visible = false;
     }
@@ -108,17 +109,17 @@ public class PauseMenu : MonoBehaviour, IDataPersistence
         SceneManager.LoadSceneAsync("MainMenu");
     }
     
-    IEnumerator LerpTimeScale(float start, float end, float duration)
+     IEnumerator LerpTimeScale(float start, float end, float duration)
     {
         float elapsed = 0f;
 
         while (elapsed < duration)
         {
             Time.timeScale = Mathf.Lerp(start, end, elapsed / duration);
-            elapsed += Time.unscaledDeltaTime; // unscaled, since timeScale is changing!
+            elapsed += Time.unscaledDeltaTime; 
             yield return null;
         }
 
-        Time.timeScale = end; // Ensure final value is set
+        Time.timeScale = end; 
     }
 }
