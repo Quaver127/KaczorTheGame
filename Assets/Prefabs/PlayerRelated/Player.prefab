@@ -216,8 +216,6 @@ GameObject:
   - component: {fileID: 7736156187024952465}
   - component: {fileID: 1042533801297516330}
   - component: {fileID: 8444325674883886021}
-  - component: {fileID: 3132994874739713087}
-  - component: {fileID: 597056885925957088}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -276,7 +274,6 @@ MonoBehaviour:
   life: 3
   currentHealth: 0
   invincible: 0
-  canMove: 1
   healing: 0
   timeToHeal: 1
   Duck: {fileID: 7070744738345719039}
@@ -306,6 +303,7 @@ MonoBehaviour:
   manaGain: 0.1
   particleJumpUp: {fileID: 5179742819741774016}
   particleJumpDown: {fileID: 5890191458037255714}
+  canMove: 1
   OnFallEvent:
     m_PersistentCalls:
       m_Calls:
@@ -605,34 +603,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &3132994874739713087
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5382760954116324236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bce0bb012ef716340aa1e98df23bb9ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  distance: 0.8
-  boxMask:
-    serializedVersion: 2
-    m_Bits: 64
---- !u!114 &597056885925957088
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5382760954116324236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 256308d4a3ede3a44b3753b97cf71068, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7224972169949929888
 GameObject:
   m_ObjectHideFlags: 0
