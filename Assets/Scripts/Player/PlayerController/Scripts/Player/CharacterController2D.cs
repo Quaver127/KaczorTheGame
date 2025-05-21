@@ -88,6 +88,9 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 	public UnityEvent OnFallEvent;
 	public UnityEvent OnLandEvent;
 
+	[Header("Misc Objects")] 
+	public AudioSource fallSound;
+
 	[System.Serializable]
 	public class BoolEvent : UnityEvent<bool> { }
 
@@ -158,6 +161,7 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 					OnLandEvent.Invoke();
 					if (!m_IsWall && !isDashing) 
 						particleJumpDown.Play();
+						fallSound.Play();
 					if (doubleJumpUnlocked)
 					{
 						canDoubleJump = true;
@@ -563,11 +567,9 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 
 	public void LoadData(GameData data)
 	{
-		CharacterController2D.dashUnlocked = data.canDashData;
 	}
 
 	public void SaveData(ref GameData data)
 	{
-		data.canDashData = CharacterController2D.dashUnlocked;
 	}
 }

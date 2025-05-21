@@ -84,9 +84,11 @@ public class PauseMenu : MonoBehaviour, IDataPersistence
         pauseMenu.SetActive(true);
     }
 
-    public void Quit(int sceneIndex)
+    public void QuitToMenu()
     {
-        StartCoroutine(Quit());
+        Time.timeScale = 1;
+        pauseMenu.SetActive(false);
+        SceneManager.LoadSceneAsync("MainMenu");
     }
 
     public void LoadData(GameData data)
@@ -99,14 +101,6 @@ public class PauseMenu : MonoBehaviour, IDataPersistence
         
     }
     
-    IEnumerator Quit()
-    {   
-        Time.timeScale = 1;
-        pauseMenu.SetActive(false);
-        fade.FadeIn();
-        yield return new WaitForSeconds(3f);
-        SceneManager.LoadSceneAsync("MainMenu");
-    }
     
      IEnumerator LerpTimeScale(float start, float end, float duration)
     {
