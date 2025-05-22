@@ -155,21 +155,30 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 		for (int i = 0; i < colliders.Length; i++)
 		{
 			if (colliders[i].gameObject != gameObject)
+			{
 				m_Grounded = true;
-				if (!wasGrounded )
+
+				if (!wasGrounded)
 				{
 					OnLandEvent.Invoke();
+					
+					if (m_Rigidbody2D.velocity.y < -0.1f && !m_IsWall && !isDashing)
+					{
+						fallSound.Play();
+					}
+
 					if (!m_IsWall && !isDashing) 
 						particleJumpDown.Play();
-						fallSound.Play();
+
 					if (doubleJumpUnlocked)
 					{
 						canDoubleJump = true;
 					}
-					
+
 					if (m_Rigidbody2D.velocity.y < 0f)
 						limitVelOnWallJump = false;
 				}
+			}
 		}
 
 		m_IsWall = false;

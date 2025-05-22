@@ -4,53 +4,75 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-	public float FollowSpeed = 2f;
-	public Transform Target;
+    public float FollowSpeed = 2f;
+    public Transform Target;
 
-	// Transform of the camera to shake. Grabs the gameObject's transform
-	// if null.
-	private Transform camTransform;
+    public bool isInBossArena = false;
+    public Vector3 bossArenaCameraPosition;
 
-	// How long the object should shake for.
-	public float shakeDuration = 0f;
+    private Transform camTransform;
+    
+    public float shakeDuration = 0f;
+    public float shakeAmount = 0.1f;
+    public float decreaseFactor = 1.0f;
 
-	// Amplitude of the shake. A larger value shakes the camera harder.
-	public float shakeAmount = 0.1f;
-	public float decreaseFactor = 1.0f;
+    Vector3 originalPos;
 
-	Vector3 originalPos;
+    void Awake()
+    {
+        Cursor.visible = false;
+        if (camTransform == null)
+        {
+            camTransform = GetComponent<Transform>();
+        }
+    }
 
-	void Awake()
-	{
-		Cursor.visible = false;
-		if (camTransform == null)
-		{
-			camTransform = GetComponent(typeof(Transform)) as Transform;
-		}
-	}
+    void OnEnable()
+    {
+        originalPos = camTransform.localPosition;
+    }
 
-	void OnEnable()
-	{
-		originalPos = camTransform.localPosition;
-	}
+    private void FixedUpdate()
+    {
+        Vector3 targetPosition;
 
-	private void FixedUpdate()
-	{
-		Vector3 newPosition = Target.position;
-		newPosition.z = -10;
-		transform.position = Vector3.Slerp(transform.position, newPosition, FollowSpeed * Time.deltaTime);
+        if (isInBossArena)
+        {
+            targetPosition = bossArenaCameraPosition;
+        }
+        else
+        {
+            if (Target == null) return;
 
-		if (shakeDuration > 0)
-		{
-			camTransform.localPosition = originalPos + Random.insideUnitSphere * shakeAmount;
+            targetPosition = new Vector3(Target.position.x, Target.position.y, -10f);
+            
+        }
 
-			shakeDuration -= Time.deltaTime * decreaseFactor;
-		}
-	}
+        
+        transform.position = Vector3.Slerp(transform.position, targetPosition, FollowSpeed * Time.deltaTime);
 
-	public void ShakeCamera()
-	{
-		originalPos = camTransform.localPosition;
-		shakeDuration = 0.2f;
-	}
+        
+        if (shakeDuration > 0)
+        {
+            camTransform.localPosition = originalPos + Random.insideUnitSphere * shakeAmount;
+            shakeDuration -= Time.deltaTime * decreaseFactor;
+        }
+    }
+
+    public void ShakeCamera()
+    {
+        originalPos = camTransform.localPosition;
+        shakeDuration = 0.2f;
+    }
+
+    public void EnterBossArena(Vector3 staticPosition)
+    {
+        isInBossArena = true;
+        bossArenaCameraPosition = staticPosition;
+    }
+
+    public void ExitBossArena()
+    {
+        isInBossArena = false;
+    }
 }

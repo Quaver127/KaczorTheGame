@@ -784,7 +784,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioJump: {fileID: 8300000, guid: 6b4318e8c46fddf44b9ea7261b120b50, type: 3}
-  audioLand: {fileID: 8300000, guid: 378aa192a9d28244897bc732792ca074, type: 3}
 --- !u!1102 &2508532495062516819
 AnimatorState:
   serializedVersion: 6
