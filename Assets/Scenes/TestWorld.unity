@@ -2985,11 +2985,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4444552068058570108, guid: 93337e5763739044d9fd12ae4a538cdf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.971456
+      value: 8.05
       objectReference: {fileID: 0}
     - target: {fileID: 4444552068058570108, guid: 93337e5763739044d9fd12ae4a538cdf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.3650224
+      value: 3.93
       objectReference: {fileID: 0}
     - target: {fileID: 4444552068058570108, guid: 93337e5763739044d9fd12ae4a538cdf, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3023,18 +3023,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5415766934733974748, guid: 93337e5763739044d9fd12ae4a538cdf, type: 3}
-      propertyPath: damage
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5415766934733974748, guid: 93337e5763739044d9fd12ae4a538cdf, type: 3}
-      propertyPath: healthUI
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5415766934733974748, guid: 93337e5763739044d9fd12ae4a538cdf, type: 3}
-      propertyPath: controller
-      value: 
-      objectReference: {fileID: 9144029407878268699}
     - target: {fileID: 9047245559625701423, guid: 93337e5763739044d9fd12ae4a538cdf, type: 3}
       propertyPath: m_Name
       value: Spikes

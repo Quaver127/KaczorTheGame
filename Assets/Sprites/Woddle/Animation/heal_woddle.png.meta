@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4d5cf49699b43d44498922728afddc89
+guid: 1df4f8da35c324147a41746ad4d14e06
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,7 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spadanie_woddle_0
+      name: heal_woddle_0
       rect:
         serializedVersion: 2
         x: 0
@@ -111,14 +111,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3979151f84fa96744b4ae588ae994f6f
-      internalID: -1168009295
+      spriteID: 3098106782fd51f49a92cfc8eb0911d6
+      internalID: 1257967324
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spadanie_woddle_1
+      name: heal_woddle_1
       rect:
         serializedVersion: 2
         x: 256
@@ -132,14 +132,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 005951daf87de3b41abe9347392dbc16
-      internalID: -145537687
+      spriteID: 6412a4eab403eed49bbb8607b50ea79d
+      internalID: -440119421
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spadanie_woddle_2
+      name: heal_woddle_2
       rect:
         serializedVersion: 2
         x: 512
@@ -153,14 +153,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3e8aa2526d2ebfe4f9c69c9f27c79b32
-      internalID: -733997080
+      spriteID: e5a367ef95bd9554ca88971fb0896839
+      internalID: 789485496
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spadanie_woddle_3
+      name: heal_woddle_3
       rect:
         serializedVersion: 2
         x: 768
@@ -174,14 +174,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e60c9755f8e7e49459518ec03e3b0cac
-      internalID: -359228173
+      spriteID: 8f4a7d3445115ad469c9a5b08b275829
+      internalID: -606989062
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spadanie_woddle_4
+      name: heal_woddle_4
       rect:
         serializedVersion: 2
         x: 1024
@@ -195,14 +195,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 16164164b6f5c0d46bb8c0b0e18e92b5
-      internalID: -1120186746
+      spriteID: ae73cd3fffc880f44826d086357e6a00
+      internalID: -1178435702
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spadanie_woddle_5
+      name: heal_woddle_5
       rect:
         serializedVersion: 2
         x: 1280
@@ -216,14 +216,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: de2f73eb2b87f8448b1e32ce11388363
-      internalID: 1233054346
+      spriteID: a3a8de6ce1535fc4ba06ad41547f19d3
+      internalID: -1987052882
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spadanie_woddle_6
+      name: heal_woddle_6
       rect:
         serializedVersion: 2
         x: 1536
@@ -237,14 +237,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 389adbaf6eb6b6342be3818a622ce70b
-      internalID: 1314717013
+      spriteID: 6695b9fa5bd2a894d94cd1c636fa8930
+      internalID: 1050413497
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spadanie_woddle_7
+      name: heal_woddle_7
       rect:
         serializedVersion: 2
         x: 1792
@@ -258,14 +258,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9f59637f4ea645549a3e0db0e24a6315
-      internalID: 708402362
+      spriteID: a3cbf583c484db64c859a72d4b54b5ac
+      internalID: 262846102
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spadanie_woddle_8
+      name: heal_woddle_8
       rect:
         serializedVersion: 2
         x: 2048
@@ -279,14 +279,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a5ca7ed9623735f4b882a202e448d26b
-      internalID: 1210090029
+      spriteID: d1b89ce520ac83042b7821f971d84a4d
+      internalID: 970806974
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spadanie_woddle_9
+      name: heal_woddle_9
       rect:
         serializedVersion: 2
         x: 2304
@@ -300,8 +300,197 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7bdb60d19f3385e42b8149f7f3cb0abc
-      internalID: 975272679
+      spriteID: ede0d7f166e4b1b49bbadb19222fb23d
+      internalID: -1872835865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heal_woddle_10
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7a9424ccfc0a404096294a1cd2be8b7
+      internalID: 541202034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heal_woddle_11
+      rect:
+        serializedVersion: 2
+        x: 2816
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db22e77dcce8f8449b98dad3aa41a8f2
+      internalID: -100341406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heal_woddle_12
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 492969be651c1eb42b7933fc37dde0f9
+      internalID: -609551285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heal_woddle_13
+      rect:
+        serializedVersion: 2
+        x: 3328
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7b21a06a224dc14c86ae9c787a024bd
+      internalID: -105487103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heal_woddle_14
+      rect:
+        serializedVersion: 2
+        x: 3584
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d5ca9c53f5ad9f4dbb51c429557578a
+      internalID: -1752173123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heal_woddle_15
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0fc6d363f57baa4e8f13657d54eb46e
+      internalID: -1174070469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heal_woddle_16
+      rect:
+        serializedVersion: 2
+        x: 4096
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6ec9892c2ffaa6498c840831c09860d
+      internalID: 1367590194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heal_woddle_17
+      rect:
+        serializedVersion: 2
+        x: 4352
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f53c18958be4e54f8779e77f61d4239
+      internalID: 352316298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heal_woddle_18
+      rect:
+        serializedVersion: 2
+        x: 4608
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 596d772ca122a6d429d5e90d172611ad
+      internalID: 857289224
       vertices: []
       indices: 
       edges: []
@@ -317,16 +506,25 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      spadanie_woddle_0: -1168009295
-      spadanie_woddle_1: -145537687
-      spadanie_woddle_2: -733997080
-      spadanie_woddle_3: -359228173
-      spadanie_woddle_4: -1120186746
-      spadanie_woddle_5: 1233054346
-      spadanie_woddle_6: 1314717013
-      spadanie_woddle_7: 708402362
-      spadanie_woddle_8: 1210090029
-      spadanie_woddle_9: 975272679
+      heal_woddle_0: 1257967324
+      heal_woddle_1: -440119421
+      heal_woddle_10: 541202034
+      heal_woddle_11: -100341406
+      heal_woddle_12: -609551285
+      heal_woddle_13: -105487103
+      heal_woddle_14: -1752173123
+      heal_woddle_15: -1174070469
+      heal_woddle_16: 1367590194
+      heal_woddle_17: 352316298
+      heal_woddle_18: 857289224
+      heal_woddle_2: 789485496
+      heal_woddle_3: -606989062
+      heal_woddle_4: -1178435702
+      heal_woddle_5: -1987052882
+      heal_woddle_6: 1050413497
+      heal_woddle_7: 262846102
+      heal_woddle_8: 970806974
+      heal_woddle_9: -1872835865
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -298,7 +298,7 @@ MonoBehaviour:
   totalTaunts: 15
   canTaunt: 1
   manaStorage: {fileID: 0}
-  mana: 1
+  mana: 6
   manaDrainSpeed: 0.33
   manaGain: 0.1
   particleJumpUp: {fileID: 5179742819741774016}
@@ -334,6 +334,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  fallSound: {fileID: 0}
 --- !u!114 &796493770929598539
 MonoBehaviour:
   m_ObjectHideFlags: 0

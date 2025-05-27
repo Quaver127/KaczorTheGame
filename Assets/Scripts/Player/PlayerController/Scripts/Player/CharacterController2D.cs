@@ -54,6 +54,7 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 	
 	
 	[Header("Healing")]
+	private bool isHealingTriggered = false;
 	public bool healing;
 	private float healTimer;
 	[SerializeField] float timeToHeal;
@@ -227,20 +228,25 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 
 	public void Heal()
 	{
-		if (Input.GetKey(KeyCode.F)
-		    && currentHealth != life
-		    && Mana > 0
-		    && animator.GetBool("IsAttacking") == false
-		    && animator.GetBool("IsJumping") == false
-		    && animator.GetBool("IsDashing") == false
-		    && animator.GetBool("IsDoubleJumping") == false
-		    && animator.GetBool("IsWallSliding") == false
-		    && Mathf.Abs(m_Rigidbody2D.velocity.x) < 0.01f
-		    && Mathf.Abs(m_Rigidbody2D.velocity.y) < 0.01f)
-		{
-			healing = true;
+		bool canHeal =
+			Input.GetKey(KeyCode.F)
+			&& currentHealth < life
+			&& Mana > 0
+			&& !animator.GetBool("IsAttacking")
+			&& !animator.GetBool("IsJumping")
+			&& !animator.GetBool("IsDashing")
+			&& !animator.GetBool("IsDoubleJumping")
+			&& !animator.GetBool("IsWallSliding")
+			&& Mathf.Abs(m_Rigidbody2D.velocity.x) < 0.01f
+			&& Mathf.Abs(m_Rigidbody2D.velocity.y) < 0.01f;
 
+		if (canHeal)
+		{
+			animator.SetBool("IsHealing", true); 
+
+			healing = true;
 			healTimer += Time.deltaTime;
+
 			if (healTimer >= timeToHeal)
 			{
 				currentHealth++;
@@ -252,8 +258,17 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 		}
 		else
 		{
+			animator.SetBool("IsHealing", false); 
 			healing = false;
 			healTimer = 0;
+		}
+		
+		bool wasHealing = animator.GetBool("IsHealing");
+		animator.SetBool("IsHealing", canHeal);
+
+		if (canHeal && !wasHealing)
+		{
+			Debug.Log("Healing started");
 		}
 	}
 	
