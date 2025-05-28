@@ -23,7 +23,7 @@ public class SceneChanger : MonoBehaviour
     {
         fade.FadeIn();
         yield return new WaitForSeconds(1.5f);
-        SceneManager.LoadSceneAsync("TestTest");
+        SceneManager.LoadSceneAsync("MainWorld");
     }
     
 }
