@@ -28955,7 +28955,7 @@ PrefabInstance:
     - target: {fileID: 1532026909187072048, guid: ff0a1b5bef8a6f541b88dff38ddda685, type: 3}
       propertyPath: ZaWarudo
       value: 
-      objectReference: {fileID: 8300000, guid: 6e914169221977b448ee01e6020fa7f1, type: 3}
+      objectReference: {fileID: 8300000, guid: 1af6d0e2d25233b48a5366cb5ae05ac1, type: 3}
     - target: {fileID: 1532026909187072048, guid: ff0a1b5bef8a6f541b88dff38ddda685, type: 3}
       propertyPath: audioSource
       value: 
@@ -28967,7 +28967,7 @@ PrefabInstance:
     - target: {fileID: 1532026909187072048, guid: ff0a1b5bef8a6f541b88dff38ddda685, type: 3}
       propertyPath: TimeFlowsAgain
       value: 
-      objectReference: {fileID: 8300000, guid: 73c40ea7145b08548955efc70e9a0701, type: 3}
+      objectReference: {fileID: 8300000, guid: e87e651e0f65e4748aa29faa70b82a6e, type: 3}
     - target: {fileID: 1887981530763288147, guid: ff0a1b5bef8a6f541b88dff38ddda685, type: 3}
       propertyPath: m_Name
       value: UI
