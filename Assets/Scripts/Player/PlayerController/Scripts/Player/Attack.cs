@@ -19,7 +19,15 @@ public class Attack : MonoBehaviour
 	
 	public GameObject cam;
 	public GameObject damageTrigger;
+	
+	public GameObject attackParticles;
+	private Animator attackAnimator;
+	
+	public GameObject chargeParticles;
+	private Animator chargeAnimator;
 
+	public AudioSource chargedScream;
+	
 	private void Awake()
 	{
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
@@ -28,6 +36,8 @@ public class Attack : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
+		attackAnimator = attackParticles.GetComponent<Animator>();
+		chargeAnimator = chargeParticles.GetComponent<Animator>();
 	}
 
     // Update is called once per frame
@@ -36,6 +46,8 @@ public class Attack : MonoBehaviour
 	    
 		if (Input.GetKeyDown(KeyCode.X) && canAttack)
 		{
+			attackParticles.SetActive(true);             
+			attackAnimator.Play("AttackAnim", 0, 0f); 
 			canAttack = false;
 			animator.SetBool("IsAttacking", true);
 			damageTrigger.SetActive(true);
@@ -53,10 +65,14 @@ public class Attack : MonoBehaviour
 
 		if (Input.GetKeyUp(KeyCode.X) && chargeTime >= 2)
 		{
+			chargeParticles.SetActive(true);
+			damageTrigger.SetActive(true);
+			attackAnimator.Play("Scream20", 0, 0f); 
+			chargedScream.Play();
 			isCharging = false;
 			chargeTime = 0;
 			StartCoroutine(ChargeDmg());
-			animator.SetBool("IsAttacking", true);
+			chargeAnimator.SetBool("IsChargeAttacking", true);
 			StartCoroutine(AttackCooldown());
 			StartCoroutine(DmgReset());
 
@@ -80,9 +96,12 @@ public class Attack : MonoBehaviour
 	IEnumerator AttackCooldown()
 	{
 		yield return new WaitForSeconds(0.01f);
-		damageTrigger.SetActive(false);
 		yield return new WaitForSeconds(0.25f);
+		damageTrigger.SetActive(false);
+		attackParticles.SetActive(false); 
 		canAttack = true;
+		yield return new WaitForSeconds(0.8f);
+		chargeParticles.SetActive(false);
 	}
 
 	IEnumerator ChargeDmg()

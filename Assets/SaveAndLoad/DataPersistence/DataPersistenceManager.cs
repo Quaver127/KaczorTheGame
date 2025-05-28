@@ -8,105 +8,115 @@ using UnityEngine.SceneManagement;
 public class DataPersistenceManager : MonoBehaviour
 {
     [Header("File Storage Config")] 
-    
     [SerializeField] private string fileName;
-
     [SerializeField] private bool useEncryption;
-    
-    
+
     private GameData gameData;
-    
     private List<IDataPersistence> dataPersistenceObjects;
     private FileDataHandler dataHandler;
-   public static DataPersistenceManager instance { get; private set; }
 
-   private void Awake()
-   {
-      if (instance != null)
-      {
-       Debug.LogError("More than one DataPersistenceManager in scene.");  
-       Destroy(this.gameObject); 
-       return;
-      }
-      instance = this;
-      
-      DontDestroyOnLoad(this.gameObject);
-      
-      this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, useEncryption);
-   }
+    public static DataPersistenceManager instance { get; private set; }
 
-   private void OnEnable()
-   {
-       SceneManager.sceneLoaded += onSceneLoaded;
-       SceneManager.sceneUnloaded += onSceneUnloaded;
-   }
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.LogError("More than one DataPersistenceManager in scene. Destroying the newest one.");  
+            Destroy(this.gameObject); 
+            return;
+        }
+        instance = this;
+        DontDestroyOnLoad(this.gameObject);
 
-   private void OnDisable()
-   {
-       SceneManager.sceneLoaded -= onSceneLoaded;
-       SceneManager.sceneUnloaded -= onSceneUnloaded;
-   }
+        dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, useEncryption);
+    }
+    
+    public GameData GetGameData()
+    {
+        return gameData;
+    }
 
-   public void onSceneLoaded(Scene scene, LoadSceneMode mode)
-   {
-       this.dataPersistenceObjects = FindAllDataPersistenceObjects();
-       LoadGame();
-   }
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.sceneUnloaded += OnSceneUnloaded;
+    }
 
-   public void onSceneUnloaded(Scene scene)
-   { 
-       SaveGame();
-   }
-   
-   public void NewGame()
-   { 
-       this.gameData = new GameData();   
-   }
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        SceneManager.sceneUnloaded -= OnSceneUnloaded;
+    }
 
-   public void LoadGame()
-   {
-       this.gameData = dataHandler.Load();
-       
-       if (this.gameData == null)
-       {
-           Debug.Log("No data was found. A new game needs to be started before data can be loaded");
-           return;
-       }
-       
-       foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
-       {
-           dataPersistenceObj.LoadData(gameData);
-       }
-   }
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        dataPersistenceObjects = FindAllDataPersistenceObjects();
+        LoadGame();
+    }
 
-   public void SaveGame()
-   {
-       if (this.gameData == null)
-       {
-           Debug.LogWarning("No data was found. A new game needs to be started before data can be saved");
-           return;
-       }
-       foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
-       {
-           dataPersistenceObj.SaveData(ref gameData);
-       }
-       dataHandler.Save(gameData);
-   }
+    private void OnSceneUnloaded(Scene scene)
+    { 
+        SaveGame();
+    }
 
-   private void OnApplicationQuit()
-   {
-       SaveGame();
-   }
+    public void NewGame()
+    { 
+        gameData = new GameData();   
+    }
 
-   private List<IDataPersistence> FindAllDataPersistenceObjects()
-   {
-       IEnumerable<IDataPersistence> dataPersistenceObjects = FindObjectsOfType<MonoBehaviour>().OfType<IDataPersistence>();
-       
-       return new List <IDataPersistence>(dataPersistenceObjects);
-   }
+    public void LoadGame()
+    {
+        gameData = dataHandler.Load();
 
-   public bool hasGameData()
-   {
-       return gameData != null;
-   }
+        if (gameData == null)
+        {
+            Debug.Log("No data was found. A new game needs to be started before data can be loaded");
+            return;
+        }
+
+        string currentScene = SceneManager.GetActiveScene().name;
+
+        
+        if (currentScene != "MainMenu" && currentScene != gameData.sceneName)
+        {
+            SceneManager.LoadScene(gameData.sceneName);
+            return;
+        }
+
+        foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
+        {
+            dataPersistenceObj.LoadData(gameData);
+        }
+    }
+
+    public void SaveGame()
+    {
+        if (gameData == null)
+        {
+            Debug.LogWarning("No data was found. A new game needs to be started before data can be saved");
+            return;
+        }
+
+        foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
+        {
+            dataPersistenceObj.SaveData(ref gameData);
+        }
+
+        dataHandler.Save(gameData);
+    }
+
+    private void OnApplicationQuit()
+    {
+        SaveGame();
+    }
+
+    private List<IDataPersistence> FindAllDataPersistenceObjects()
+    {
+        return FindObjectsOfType<MonoBehaviour>().OfType<IDataPersistence>().ToList();
+    }
+
+    public bool HasGameData()
+    {
+        return gameData != null;
+    }
 }

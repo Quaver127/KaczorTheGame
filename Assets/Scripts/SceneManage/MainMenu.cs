@@ -39,7 +39,7 @@ public class MainMenu : MonoBehaviour
     {
         fade = FindObjectOfType<FadeInOut>();
         
-        if (!DataPersistenceManager.instance.hasGameData())
+        if (!DataPersistenceManager.instance.HasGameData())
         {
             continueGameButton.interactable = false;
             continueGameButton.gameObject.SetActive(false);
@@ -56,13 +56,13 @@ public class MainMenu : MonoBehaviour
 
     public void onContinueClicked()
     {
+        
         StartCoroutine(ContinueGame());
     }
 
     public void Options()
     {
         newGameButton.gameObject.SetActive(false);
-        continueGameButton.gameObject.SetActive(false);
         optionsButton.gameObject.SetActive(false);
         quitButton.gameObject.SetActive(false);
         quackButton.gameObject.SetActive(false);
@@ -71,7 +71,6 @@ public class MainMenu : MonoBehaviour
     public void OptionsBack()
     {
         newGameButton.gameObject.SetActive(true);
-        continueGameButton.gameObject.SetActive(true);
         optionsButton.gameObject.SetActive(true);
         quitButton.gameObject.SetActive(true);
         quackButton.gameObject.SetActive(true);
@@ -98,6 +97,7 @@ public class MainMenu : MonoBehaviour
         }
         else if (layerCounter == 1)
         {
+            
             crackSound.Play();
             crack1.SetActive(false);
             crack2.SetActive(true);
@@ -105,6 +105,11 @@ public class MainMenu : MonoBehaviour
         }
         else if (layerCounter == 2)
         {
+            continueGameButton.interactable = false;
+            newGameButton.interactable = false;
+            optionsButton.interactable = false;
+            quackButton.interactable = false;
+            quitButton.interactable = false;
             jebemIgora.Stop();
             crackSound.Play();
             legL.SetActive(true);
@@ -114,7 +119,7 @@ public class MainMenu : MonoBehaviour
             fade.FadeIn();
             yield return new WaitForSeconds(4.5f);
             DataPersistenceManager.instance.NewGame();
-            SceneManager.LoadSceneAsync("MainWorld");
+            SceneManager.LoadSceneAsync("TestWorld");
         }
         
     }
@@ -124,6 +129,11 @@ public class MainMenu : MonoBehaviour
         layerCounter = 2;
         if (layerCounter == 2)
         {
+            continueGameButton.interactable = false;
+            newGameButton.interactable = false;
+            optionsButton.interactable = false;
+            quackButton.interactable = false;
+            quitButton.interactable = false;
             jebemIgora.Stop();
             funnySound.Play();
             fade.FadeIn();
@@ -131,7 +141,7 @@ public class MainMenu : MonoBehaviour
             legL.SetActive(true);
             legR.SetActive(true);
             yield return new WaitForSeconds(4.5f);
-            SceneManager.LoadSceneAsync("MainWorld");
+            SceneManager.LoadSceneAsync("TestWorld");
         }
         
     }

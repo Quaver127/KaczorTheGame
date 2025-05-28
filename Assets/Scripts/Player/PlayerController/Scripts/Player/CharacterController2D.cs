@@ -11,7 +11,7 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 {
 	public PauseMenu pauseCheck;
 	
-	
+	public static CharacterController2D playerInstance;
 	
 	[SerializeField] private float m_JumpForce = 400f;							
 	[Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;	
@@ -42,7 +42,7 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 	[Header("Unlock Checks")]
 	public static bool dashUnlocked = true;
 	public static bool doubleJumpUnlocked = true;
-	public static bool wallJumpUnlocked = false;
+	public static bool wallJumpUnlocked = true;
 	
 	
 	
@@ -91,12 +91,23 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 
 	[Header("Misc Objects")] 
 	public AudioSource fallSound;
+	
 
 	[System.Serializable]
 	public class BoolEvent : UnityEvent<bool> { }
 
 	private void Awake()
 	{
+		if (playerInstance != null && playerInstance != this)
+		{
+			Destroy(gameObject);
+			return;
+		}
+
+		playerInstance = this;
+		DontDestroyOnLoad(gameObject);
+		
+		
 		audioSource.ignoreListenerPause = true;
 		
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
@@ -134,13 +145,14 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 
 		if (pauseCheck.isPaused)
 		{
-			audioSource.Pause();
+			AudioListener.pause = true;
 			animator.SetBool("canMove", false);
 		}
 		else
 		{
-			audioSource.UnPause();
+			AudioListener.pause = false;
 			animator.SetBool("canMove", true);
+			
 		}
 	}
 	
@@ -591,9 +603,12 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 
 	public void LoadData(GameData data)
 	{
+		transform.position = data.playerPosition;
 	}
 
 	public void SaveData(ref GameData data)
 	{
+		data.playerPosition = transform.position;
+		data.sceneName = SceneManager.GetActiveScene().name;
 	}
 }

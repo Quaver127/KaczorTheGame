@@ -66,12 +66,7 @@ public class PauseMenu : MonoBehaviour, IDataPersistence
         StartCoroutine(LerpTimeScale(Time.timeScale, 1f, 1.9f));
         Cursor.visible = false;
     }
-
-    public void Save()
-    {
-        
-    }
-
+    
     public void Options()
     {
         pauseMenu.SetActive(false);
@@ -89,6 +84,7 @@ public class PauseMenu : MonoBehaviour, IDataPersistence
         Time.timeScale = 1;
         pauseMenu.SetActive(false);
         SceneManager.LoadSceneAsync("MainMenu");
+        Debug.Log("Going to menu");
     }
 
     public void LoadData(GameData data)
