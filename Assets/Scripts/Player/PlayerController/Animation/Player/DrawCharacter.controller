@@ -556,7 +556,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ff4409926f4822409c8003d703f6dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSound: {fileID: 8300000, guid: 6b4318e8c46fddf44b9ea7261b120b50, type: 3}
+  audioSound: {fileID: 8300000, guid: 507c329c2ab9d2745a0e369233ca0f53, type: 3}
   loop: 0
 --- !u!91 &9100000
 AnimatorController:
@@ -827,7 +827,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bddbe7cb6a305140b8c616bb9082a74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioJump: {fileID: 8300000, guid: 6b4318e8c46fddf44b9ea7261b120b50, type: 3}
+  audioJump: {fileID: 8300000, guid: da82ae770fa44ce45b128a6b31ccb034, type: 3}
 --- !u!1102 &2355876003108058796
 AnimatorState:
   serializedVersion: 6
@@ -997,8 +997,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ff4409926f4822409c8003d703f6dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSound: {fileID: 8300000, guid: 0da92b401c6fd19409a4054e17169534, type: 3}
-  loop: 1
+  audioSound: {fileID: 8300000, guid: 3966731e479ecdb4e87fbf65787c814f, type: 3}
+  loop: 0
 --- !u!1102 &5342972749822806137
 AnimatorState:
   serializedVersion: 6
