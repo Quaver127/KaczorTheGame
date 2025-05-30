@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 using System.Collections.Generic;
-using Sirenix.OdinInspector;
+
 
 public class CharacterController2D : MonoBehaviour, IDataPersistence
 {
