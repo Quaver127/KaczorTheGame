@@ -73,6 +73,7 @@ public class Attack : MonoBehaviour
 			chargeTime = 0;
 			StartCoroutine(ChargeDmg());
 			chargeAnimator.SetBool("IsChargeAttacking", true);
+			animator.SetBool("IsChargeAttacking", true);
 			StartCoroutine(AttackCooldown());
 			StartCoroutine(DmgReset());
 
