@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 
 public class CharacterController2D : MonoBehaviour, IDataPersistence
 {
@@ -27,6 +28,7 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 	private Vector3 velocity = Vector3.zero;
 	private float limitFallSpeed = 25f;
 
+	
 	[Header("Checks")] 
 	public bool canWallJump = true;
 	public bool canDoubleJump = true; 
@@ -46,7 +48,7 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 	
 	
 	
-	[Header("Life")]
+	[Header("Life Settings")]
 	public HealthUI healthUI;
 	public int life = 3;
 	public int currentHealth;

@@ -7695,6 +7695,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 663057907}
     - target: {fileID: 6340194472073595503, guid: 20589b77d6f3c494a84ef4c975c37579, type: 3}
+      propertyPath: canWallJump
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6340194472073595503, guid: 20589b77d6f3c494a84ef4c975c37579, type: 3}
       propertyPath: manaStorage
       value: 
       objectReference: {fileID: 96485916}
