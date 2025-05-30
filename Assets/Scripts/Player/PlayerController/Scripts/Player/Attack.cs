@@ -4,28 +4,34 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
+	[Separator(5,5)]
 	public float atkRadius = 20f;
 	public float dmgValue = 4;
+	
+	[Separator(5,5)]
 	public GameObject throwableObject;
 	public Transform attackCheck;
+	
+	[Separator(5,5)]
 	private Rigidbody2D m_Rigidbody2D;
 	public Animator animator;
 	public bool canAttack = true;
 	public bool isTimeToCheck = false;
 
+	[Separator(5,5)]
 	public float chargeTime;
 	public bool isCharging = false;
 	
-	
+	[Separator(5,5)]
 	public GameObject cam;
 	public GameObject damageTrigger;
-	
+	[Separator(5,5)]
 	public GameObject attackParticles;
 	private Animator attackAnimator;
-	
+	[Separator(5,5)]
 	public GameObject chargeParticles;
 	private Animator chargeAnimator;
-
+	[Separator(5,5)]
 	public AudioSource chargedScream;
 	
 	private void Awake()

@@ -28,8 +28,9 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 	private Vector3 velocity = Vector3.zero;
 	private float limitFallSpeed = 25f;
 
+	[Separator(5,5)]
 	
-	[Header("Checks")] 
+	[ColoredHeader("Checks", "#FFFFFF", "#000000", -2.5f, 0f)]
 	public bool canWallJump = true;
 	public bool canDoubleJump = true; 
 	[SerializeField] private float m_DashForce = 25f;
@@ -41,19 +42,22 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 	private float prevVelocityX = 0f;
 	private bool canCheck = false; 
 	
-	[Header("Unlock Checks")]
+	[Separator(5,5)]
+	
+	
 	public static bool dashUnlocked = true;
 	public static bool doubleJumpUnlocked = true;
 	public static bool wallJumpUnlocked = true;
 	
+	[Separator(5,5)]
 	
-	
-	[Header("Life Settings")]
+	[ColoredHeader("Life Settings", "#FFFFFF", "#B72828",-2.5f, 0f)]
 	public HealthUI healthUI;
 	public int life = 3;
 	public int currentHealth;
 	public bool invincible = false; 
 	
+	[Separator(5,5)]
 	
 	[Header("Healing")]
 	private bool isHealingTriggered = false;
@@ -61,8 +65,11 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 	private float healTimer;
 	[SerializeField] float timeToHeal;
 	
-	[Header("Taunt")]
 	private AnimatorOverrideController overrideController;
+	
+	[Separator(5,5)]
+	
+	[ColoredHeader("Taunt Settings", "#FFFFFF", "#397048",-2.5f, 0f)] 
 	public Animator Duck;
 	public AudioSource audioSource;
 	public AudioClip clip;
@@ -71,7 +78,9 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 	private bool isTaunting = false;
 	public bool canTaunt = true;
 	
-	[Header("Mana Settings")]
+	[Separator(5,5)]
+	
+	[ColoredHeader("Mana Settings", "#FFFFFF", "#0000CC",-2.5f, 0f)]
 	[SerializeField] Image manaStorage;
 	[SerializeField] public float mana;
 	[SerializeField] private float manaDrainSpeed;
@@ -84,13 +93,14 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 	private float jumpWallStartX = 0;
 	private float jumpWallDistX = 0; 
 	private bool limitVelOnWallJump = false; 
-
+	
 	[Header("Events")]
 	[Space]
 
 	public UnityEvent OnFallEvent;
 	public UnityEvent OnLandEvent;
 
+	[Separator(5,5)]
 	[Header("Misc Objects")] 
 	public AudioSource fallSound;
 	
