@@ -128,14 +128,15 @@ public class Attack : MonoBehaviour
 		Collider2D[] collidersEnemies = Physics2D.OverlapCircleAll(attackCheck.position, atkRadius);
 		for (int i = 0; i < collidersEnemies.Length; i++)
 		{
-			if (collidersEnemies[i].gameObject.tag == "Enemy")
+			string tag = collidersEnemies[i].gameObject.tag;
+
+			if (tag == "Enemy" || tag == "GruzMother") 
 			{
-				if (collidersEnemies[i].transform.position.x - transform.position.x < 0)
 				{
 					dmgValue = -dmgValue;
 				}
 				collidersEnemies[i].gameObject.SendMessage("ApplyDamage", dmgValue);
-				cam.GetComponent<CameraFollow>().ShakeCamera();
+				cam.GetComponent<CameraFollow>().ShakeCamera(); 
 			}
 		}
 	}

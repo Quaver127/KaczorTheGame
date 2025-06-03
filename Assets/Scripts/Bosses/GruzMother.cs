@@ -5,6 +5,16 @@ using UnityEngine;
 
 public class GruzMother : MonoBehaviour
 {
+    [SerializeField] private GameObject gateL;
+    [SerializeField] private GameObject gateR;
+    
+    public Animator gateL_Animator;
+    public Animator gateR_Animator;
+    
+    [Header("Sleep")]
+    [SerializeField] float sleepMovementSpeed;
+    [SerializeField] Vector2 sleepMovementDirection;
+    
     [Header("Idel")]
     [SerializeField] float idelMovementSpeed;
     [SerializeField] Vector2 idelMovementDirection;
@@ -16,6 +26,12 @@ public class GruzMother : MonoBehaviour
     [Header("AttackPlayer")]
     [SerializeField] float attackPlayerSpeed;
     [SerializeField] Transform player;
+    
+    [Header("Health")]
+    [SerializeField] private float maxHealth;
+    private float currentHealth;
+    public bool isInvincible = false;
+    private bool isHitted = false;
 
     [Header("Other")]
     [SerializeField] Transform goundCheckUp;
@@ -34,10 +50,11 @@ public class GruzMother : MonoBehaviour
     private bool goingUp = true;
     private Rigidbody2D enemyRB;
     private Animator enemyAnim;
-
-
+    
     void Start()
     {
+        currentHealth = maxHealth;
+        
         idelMovementDirection.Normalize();
         attackMovementDirection.Normalize();
         enemyRB = GetComponent<Rigidbody2D>();
@@ -65,6 +82,14 @@ public class GruzMother : MonoBehaviour
         }
     }
 
+
+    public void SleepState()
+    {
+        if (enemyAnim.GetBool("isSleeping"))
+        {
+            enemyRB.velocity = sleepMovementSpeed * sleepMovementDirection;
+        }
+    }
    public void IdelState()
     {
         if (isTouchingUp && goingUp)
@@ -168,6 +193,53 @@ public class GruzMother : MonoBehaviour
         attackMovementDirection.x *= -1;
         transform.Rotate(0, 180, 0);
     }
+    
+    public void ApplyDamage(float damage)
+    {
+        Debug.Log("ApplyDamage called with: " + damage);
+
+        if (isInvincible)
+        {
+            Debug.Log("But boss is invincible");
+            return;
+        }
+
+        currentHealth += damage;
+        Debug.Log("Boss health is now: " + currentHealth);
+
+        //enemyAnim.SetTrigger("Hit");
+
+        StartCoroutine(HitTime());
+
+        if (currentHealth <= 0)
+        {
+            StartCoroutine(OpenGates());
+        }
+    }
+    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (enemyAnim.GetBool("isSleeping") && other.CompareTag("Player"))
+        {
+            gateL.SetActive(true);
+            gateR.SetActive(true);
+            gateL_Animator.Play("GateL_Open");
+            gateR_Animator.Play("GateR_Open");
+            Debug.Log("Player entered boss area. Wake up!");
+            enemyAnim.SetBool("isSleeping", false);
+            enemyAnim.SetTrigger("Idle");
+            IdelState();
+            Destroy(GetComponent<CircleCollider2D>());
+        }
+    }
+    
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player") && currentHealth > 0)
+        {
+            collision.gameObject.GetComponent<CharacterController2D>().ApplyDamage(1, transform.position);
+        }
+    }
 
     private void OnDrawGizmosSelected()
     {
@@ -175,5 +247,27 @@ public class GruzMother : MonoBehaviour
         Gizmos.DrawWireSphere(goundCheckUp.position, groundCheckRadius);
         Gizmos.DrawWireSphere(goundCheckDown.position, groundCheckRadius);
         Gizmos.DrawWireSphere(goundCheckWall.position, groundCheckRadius);
+    }
+    
+    IEnumerator HitTime()
+    {
+        isHitted = true;
+        isInvincible = true;
+        yield return new WaitForSeconds(0.2f);
+        isHitted = false;
+        isInvincible = false;
+    }
+
+    IEnumerator OpenGates()
+    {
+        GetComponent<Collider2D>().enabled = false;
+        yield return new WaitForSeconds(1f);
+        gateL_Animator.Play("GateL_Close");
+        gateR_Animator.Play("GateR_Close");
+        yield return new WaitForSeconds(0.25f);
+        Debug.Log("Boss defeated!");
+        enemyRB.velocity = Vector2.zero;
+        this.enabled = false;
+        Destroy(gameObject);
     }
 }
