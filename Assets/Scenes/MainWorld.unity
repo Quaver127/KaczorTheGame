@@ -14440,6 +14440,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7542655695175886334, guid: 97c7134ecbecf1d438fd5922eef02908, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7542655695175886334, guid: 97c7134ecbecf1d438fd5922eef02908, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: ceb8d47af71c5104e84eb5334f85d9a6, type: 3}
+    - target: {fileID: 7542655695175886334, guid: 97c7134ecbecf1d438fd5922eef02908, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8633977094761556835, guid: 97c7134ecbecf1d438fd5922eef02908, type: 3}
       propertyPath: m_Name
       value: AudioManager
