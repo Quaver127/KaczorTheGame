@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class GruzMother : MonoBehaviour
 {
+    public static GruzMother instance;
+    
     [SerializeField] private GameObject gateL;
     [SerializeField] private GameObject gateR;
     
@@ -51,6 +53,16 @@ public class GruzMother : MonoBehaviour
     private Rigidbody2D enemyRB;
     private Animator enemyAnim;
     
+    private bool hasBeenKilled = false;
+
+    void Awake()
+    {
+        if (hasBeenKilled)
+        {
+            Debug.Log("Already Killed");
+            Destroy(gameObject);
+        }
+    }
     void Start()
     {
         currentHealth = maxHealth;
@@ -264,10 +276,13 @@ public class GruzMother : MonoBehaviour
         yield return new WaitForSeconds(1f);
         gateL_Animator.Play("GateL_Close");
         gateR_Animator.Play("GateR_Close");
+        gateL.SetActive(false);
+        gateR.SetActive(false);
         yield return new WaitForSeconds(0.25f);
         Debug.Log("Boss defeated!");
         enemyRB.velocity = Vector2.zero;
         this.enabled = false;
-        Destroy(gameObject);
+        hasBeenKilled = true;
     }
+    
 }

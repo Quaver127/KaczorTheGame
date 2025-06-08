@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour, IDataPersistence
 {
+    public static PauseMenu instance;
     FadeInOut fade;
     [Header("On/Off Objects")]
     [SerializeField] public GameObject pauseMenu;
@@ -20,6 +21,17 @@ public class PauseMenu : MonoBehaviour, IDataPersistence
     public AudioClip TimeFlowsAgain;
    // [SerializeField] private GameObject duckWalk;
     public bool isPaused = false;
+
+    public void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        instance = this;
+    }
 
     public void Start()
     {

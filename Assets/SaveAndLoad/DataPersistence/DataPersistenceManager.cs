@@ -75,13 +75,7 @@ public class DataPersistenceManager : MonoBehaviour
         }
 
         string currentScene = SceneManager.GetActiveScene().name;
-
         
-        if (currentScene != "MainMenu" && currentScene != gameData.sceneName)
-        {
-            SceneManager.LoadScene(gameData.sceneName);
-            return;
-        }
 
         foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
         {

@@ -119,7 +119,7 @@ public class MainMenu : MonoBehaviour
             fade.FadeIn();
             yield return new WaitForSeconds(4.5f);
             DataPersistenceManager.instance.NewGame();
-            SceneManager.LoadSceneAsync("TestWorld");
+            SceneManager.LoadSceneAsync("MainWorld");
         }
         
     }
@@ -141,7 +141,7 @@ public class MainMenu : MonoBehaviour
             legL.SetActive(true);
             legR.SetActive(true);
             yield return new WaitForSeconds(4.5f);
-            SceneManager.LoadSceneAsync("TestWorld");
+            SceneManager.LoadSceneAsync("MainWorld");
         }
         
     }

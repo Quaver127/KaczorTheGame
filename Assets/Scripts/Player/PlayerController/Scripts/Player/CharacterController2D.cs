@@ -8,11 +8,9 @@ using Random = UnityEngine.Random;
 using System.Collections.Generic;
 
 
-public class CharacterController2D : MonoBehaviour, IDataPersistence
+public class CharacterController2D : MonoBehaviour
 {
 	public PauseMenu pauseCheck;
-	
-	public static CharacterController2D playerInstance;
 	
 	[SerializeField] private float m_JumpForce = 400f;							
 	[Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;	
@@ -110,26 +108,17 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 
 	private void Awake()
 	{
-		if (playerInstance != null && playerInstance != this)
-		{
-			Destroy(gameObject);
-			return;
-		}
+			audioSource.ignoreListenerPause = true;
 
-		playerInstance = this;
-		DontDestroyOnLoad(gameObject);
-		
-		
-		audioSource.ignoreListenerPause = true;
-		
-		m_Rigidbody2D = GetComponent<Rigidbody2D>();
-		animator = GetComponent<Animator>();
+			m_Rigidbody2D = GetComponent<Rigidbody2D>();
+			animator = GetComponent<Animator>();
 
-		if (OnFallEvent == null)
-			OnFallEvent = new UnityEvent();
+			if (OnFallEvent == null)
+				OnFallEvent = new UnityEvent();
 
-		if (OnLandEvent == null)
-			OnLandEvent = new UnityEvent();
+			if (OnLandEvent == null)
+				OnLandEvent = new UnityEvent();
+		
 	}
 
 	private void Start()
@@ -608,19 +597,6 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 		yield return new WaitForSeconds(0.4f);
 		m_Rigidbody2D.velocity = new Vector2(0, m_Rigidbody2D.velocity.y);
 		yield return new WaitForSeconds(1.1f);
-		SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
-	}
-	
-	
-
-	public void LoadData(GameData data)
-	{
-		transform.position = data.playerPosition;
-	}
-
-	public void SaveData(ref GameData data)
-	{
-		data.playerPosition = transform.position;
-		data.sceneName = SceneManager.GetActiveScene().name;
+		SceneManager.LoadSceneAsync("MainWorld");
 	}
 }
