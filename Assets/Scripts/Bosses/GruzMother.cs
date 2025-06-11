@@ -10,6 +10,8 @@ public class GruzMother : MonoBehaviour
     [SerializeField] private GameObject gateL;
     [SerializeField] private GameObject gateR;
     
+    public GameObject portal;
+    
     public Animator gateL_Animator;
     public Animator gateR_Animator;
     
@@ -283,6 +285,7 @@ public class GruzMother : MonoBehaviour
         enemyRB.velocity = Vector2.zero;
         this.enabled = false;
         hasBeenKilled = true;
+        portal.SetActive(true);
     }
     
 }
