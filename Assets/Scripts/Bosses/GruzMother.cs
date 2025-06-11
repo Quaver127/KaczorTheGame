@@ -278,10 +278,10 @@ public class GruzMother : MonoBehaviour
         yield return new WaitForSeconds(1f);
         gateL_Animator.Play("GateL_Close");
         gateR_Animator.Play("GateR_Close");
+        yield return new WaitForSeconds(0.5f);
+        Debug.Log("Boss defeated!");
         gateL.SetActive(false);
         gateR.SetActive(false);
-        yield return new WaitForSeconds(0.25f);
-        Debug.Log("Boss defeated!");
         enemyRB.velocity = Vector2.zero;
         this.enabled = false;
         hasBeenKilled = true;
